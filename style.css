@@ -1,0 +1,41 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  cursor: none !important;
+}
+
+#text {
+  white-space: pre-line;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 0.5em;
+  color: #888;
+  position: absolute;
+  bottom: 10px;
+}
+
+footer a {
+  color: #888;
+  text-decoration: none;
+}
+
+.typed-cursor {
+  display: none !important;
+}
