@@ -17,6 +17,9 @@ body {
   text-align: center;
   height: 100%;
   cursor: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #text {
