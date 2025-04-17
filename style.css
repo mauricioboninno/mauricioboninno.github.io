@@ -59,17 +59,12 @@ footer a {
 }
 
 .social-buttons a {
-  background-color: #222;
-  color: white;
-  text-decoration: none;
-  padding: 3px 5px;
-  font-size: 0.7em;
-  border-radius: 3px;
-  display: flex;
+  padding: 4px;
+  font-size: 1em;
+  border-radius: 5px;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  transition: background-color 0.2s;
-  border: none;
+  justify-content: center;
 }
 
 .social-buttons a:hover {
