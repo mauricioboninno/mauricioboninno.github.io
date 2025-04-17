@@ -5,19 +5,13 @@
   ];
 
   export function handleQuotesTyping(selector = '#text') {
-    const allQuotes =  [...quotes, "Good luck!"];
-
     new Typed(selector, {
-        strings: allQuotes,
+        strings: [...quotes, "Good luck!"],
         typeSpeed: 75,
         startDelay: 1500,
         backSpeed: 75,
         smartBackspace: true,
         shuffle: false,
         backDelay: 1500,
-        preStringTyped: (arrayPos, self) => {
-          const nextQuote = allQuotes[arrayPos];
-          console.log('Next quote:', nextQuote);
-        }
       });
   }
