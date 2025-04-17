@@ -54,7 +54,9 @@ footer a {
   pointer-events: none;
   transition: opacity 0.3s ease;
   position: absolute;
-  bottom: 40px;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
   background-color: black;
   padding: 10px;
   border-radius: 8px;
