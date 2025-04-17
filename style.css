@@ -47,3 +47,56 @@ footer a {
 .typed-cursor {
   display: none !important;
 }
+
+.hover-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.main-button {
+  background-color: #222;
+  border: 1px solid #444;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.main-button:hover {
+  background-color: #333;
+}
+
+.hover-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 5px;
+  flex-direction: column;
+  padding: 5px 0;
+  animation-duration: 0.4s;
+}
+
+.hover-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+
+.hover-menu a:hover {
+  background-color: #222;
+}
+
+.hover-button:hover .hover-menu {
+  display: flex;
+  animation-name: fadeInDown;
+}
