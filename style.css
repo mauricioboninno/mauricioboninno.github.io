@@ -48,25 +48,31 @@ footer a {
   display: none !important;
 }
 
-.social-buttons {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
+.social-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.social-icons {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: row;
-  gap: 6px;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.social-buttons a {
-  padding: 4px;
-  font-size: 1em;
-  border-radius: 5px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(1000%);
 }
 
-.social-buttons a:hover {
-  background-color: black;
+.social-hover:hover + .social-icons {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-10px);
 }
