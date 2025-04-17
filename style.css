@@ -49,7 +49,6 @@ footer a {
 }
 
 .social-menu {
-  display: none;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -74,7 +73,6 @@ footer a {
 }
 
 footer:hover .social-menu {
-  display: flex;
   opacity: 1;
   pointer-events: auto;
 }
