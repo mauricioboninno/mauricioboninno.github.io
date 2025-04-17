@@ -4,9 +4,11 @@
     "How far would you go for what you desire?"
   ];
 
-  export function handleQuotesTyping(selector = '#text') {    
+  export function handleQuotesTyping(selector = '#text') {
+    const allQuotes =  [...quotes, "Good luck!"];
+
     new Typed(selector, {
-        strings: [...quotes, "Good luck!"],
+        strings: allQuotes,
         typeSpeed: 75,
         startDelay: 1500,
         backSpeed: 75,
