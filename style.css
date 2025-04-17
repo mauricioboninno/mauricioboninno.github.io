@@ -48,58 +48,30 @@ footer a {
   display: none !important;
 }
 
-.hover-button {
+.social-buttons {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 1000;
-}
-
-.main-button {
-  background-color: black;
-  padding: 4px 6px;
-  border-radius: 3px;
-  font-size: 0.8em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main-button:hover {
-  background-color: black;
-}
-
-.hover-menu {
-  display: none;
-  position: absolute;
-  top: 110%;
-  right: 0;
-  background-color: black;
-  border: 1px solid black;
-  border-radius: 5px;
+  display: flex;
   flex-direction: column;
-  padding: 4px 0;
-  animation-duration: 0.4s;
+  gap: 6px;
 }
 
-.hover-menu a {
+.social-buttons a {
+  background-color: black;
   color: white;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 4px 6px;
+  font-size: 0.8em;
+  border-radius: 3px;
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.8em;
   transition: background-color 0.2s;
+  border: none;
 }
 
-.hover-menu a:hover {
-  background-color: black;
-}
-
-.hover-button:hover .hover-menu {
-  display: flex;
-  animation-name: fadeInDown;
+.social-buttons a:hover {
+  background-color: #333;
 }
