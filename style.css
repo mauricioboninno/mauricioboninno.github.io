@@ -58,11 +58,14 @@ footer a {
 .main-button {
   background-color: #222;
   border: 1px solid #444;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 1.2em;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-button:hover {
@@ -85,10 +88,11 @@ footer a {
 .hover-menu a {
   color: white;
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 6px 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  font-size: 0.9em;
   transition: background-color 0.2s;
 }
 
