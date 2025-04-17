@@ -13,5 +13,9 @@
         smartBackspace: true,
         shuffle: false,
         backDelay: 1500,
+        preStringTyped: (arrayPos, self) => {
+          const nextQuote = allQuotes[arrayPos];
+          console.log('Next quote:', nextQuote);
+        }
       });
   }
