@@ -12,6 +12,10 @@
 
   let showDefaultText = true;
 
+  function parseFooterType(isDefaultText, defaultText, dateTimeText) {
+    element.innerHTML = isDefaultText ? defaultText : dateTimeText;
+  }
+
   function updateFooterType() {
     element.classList.remove("animate__fadeIn");
     element.classList.add("animate__fadeOut");
@@ -20,7 +24,7 @@
       const defaultText = `made with <span>&lt;3</span> by <a href="mailto:mauricio@boninno.com.ar">@mau</a> in 3 minutes`;
       const dateTimeText = loadDateTime();
 
-      element.innerHTML = showDefaultText ? defaultText : dateTimeText;
+      parseFooterType(showDefaultText, defaultText, dateTimeText)
 
       element.classList.remove("animate__fadeOut");
       element.classList.add("animate__fadeIn");
