@@ -53,26 +53,35 @@ footer a {
   display: inline-block;
 }
 
+.social-hover {
+  display: inline-block;
+  color: #888;
+}
+
 .social-icons {
-  position: absolute;
-  left: 50%;
-  top: -40px;
-  transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 15px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.social-icons img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(1000%);
+.social-icons i {
+  font-size: 24px;
+  color: white;
+  transition: transform 0.3s ease;
 }
 
 .social-hover:hover + .social-icons {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.social-icons a:hover i {
+  transform: scale(1.2);
 }
