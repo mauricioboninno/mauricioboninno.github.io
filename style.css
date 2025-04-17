@@ -56,7 +56,7 @@ footer a {
 }
 
 .main-button {
-  background-color: #222;
+  background-color: black;
   padding: 4px 6px;
   border-radius: 3px;
   font-size: 0.8em;
@@ -65,11 +65,10 @@ footer a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
 }
 
 .main-button:hover {
-  background-color: #333;
+  background-color: black;
 }
 
 .hover-menu {
@@ -77,8 +76,8 @@ footer a {
   position: absolute;
   top: 110%;
   right: 0;
-  background-color: #111;
-  border: 1px solid #333;
+  background-color: black;
+  border: 1px solid black;
   border-radius: 5px;
   flex-direction: column;
   padding: 4px 0;
@@ -97,7 +96,7 @@ footer a {
 }
 
 .hover-menu a:hover {
-  background-color: #222;
+  background-color: black;
 }
 
 .hover-button:hover .hover-menu {
