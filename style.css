@@ -53,7 +53,7 @@ footer a {
   pointer-events: none;
   transition: opacity 0.3s ease;
   position: absolute;
-  bottom: calc(100% + 30px);
+  bottom: calc(100% + 50px);
   left: 50%;
   transform: translateX(-50%);
   background-color: black;
@@ -75,8 +75,4 @@ footer a {
 footer:hover .social-menu {
   opacity: 1;
   pointer-events: auto;
-}
-
-.social-menu:hover {
-  cursor: pointer
 }
