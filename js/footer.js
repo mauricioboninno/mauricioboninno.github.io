@@ -10,11 +10,11 @@
     }).format(now);
   };
 
-  let showDefaultText = true;
-
-  function parseFooterType(isDefaultText, defaultText, dateTimeText) {
+  const parseFooterType = (isDefaultText, defaultText, dateTimeText) => {
     element.innerHTML = isDefaultText ? defaultText : dateTimeText;
-  }
+  };
+
+  let showDefaultText = true;
 
   function updateFooterType() {
     element.classList.remove("animate__fadeIn");
