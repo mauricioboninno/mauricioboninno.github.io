@@ -57,7 +57,6 @@ footer a {
 
 .main-button {
   background-color: #222;
-  border: 1px solid #444;
   padding: 4px 6px;
   border-radius: 3px;
   font-size: 0.8em;
@@ -66,6 +65,7 @@ footer a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
 
 .main-button:hover {
