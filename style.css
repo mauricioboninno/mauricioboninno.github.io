@@ -76,3 +76,7 @@ footer:hover .social-menu {
   opacity: 1;
   pointer-events: auto;
 }
+
+.social-menu:hover {
+  cursor: pointer
+}
