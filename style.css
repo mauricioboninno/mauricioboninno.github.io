@@ -1,19 +1,16 @@
 * {
   box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
-  cursor: none !important;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  pointer-events: none;
 }
 
 body {
@@ -27,6 +24,7 @@ body {
   align-items: center;
   text-align: center;
   height: 100%;
+  cursor: url('img/clockwise-gear.gif'), auto;
 }
 
 #text {
