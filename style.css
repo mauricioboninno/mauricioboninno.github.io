@@ -53,7 +53,7 @@ footer a {
   pointer-events: none;
   transition: opacity 0.3s ease;
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 30px);
   left: 50%;
   transform: translateX(-50%);
   background-color: black;
