@@ -61,6 +61,16 @@ footer a {
   padding: 10px;
   border-radius: 8px;
   gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-menu i,
+.social-menu img {
+  font-size: 1.5em;
+  width: 1.5em;
+  height: 1.5em;
 }
 
 footer:hover .social-menu {
