@@ -47,32 +47,3 @@ footer a {
 .typed-cursor {
   display: none !important;
 }
-
-.social-menu {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  position: absolute;
-  bottom: calc(100% + 50px);
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: black;
-  padding: 10px;
-  border-radius: 8px;
-  gap: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.social-menu i,
-.social-menu img {
-  font-size: 1.5em;
-  width: 1.5em;
-  height: 1.5em;
-}
-
-footer:hover .social-menu {
-  opacity: 1;
-  pointer-events: auto;
-}
