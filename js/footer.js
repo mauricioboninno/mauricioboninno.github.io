@@ -21,7 +21,7 @@
 
     const defaultText = `
     made with <span>&lt;3</span> by 
-    <span class="social-hover">@mau</span> 
+    <a href="mailto:mauricio@boninno.com.ar">@mau</a> 
     in 3 minutes`;
     
     //const defaultText = `made with <span>&lt;3</span> by <a href="mailto:mauricio@boninno.com.ar">@mau</a> in 3 minutes`;
