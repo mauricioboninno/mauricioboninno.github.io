@@ -58,9 +58,9 @@ footer a {
 .main-button {
   background-color: #222;
   border: 1px solid #444;
-  padding: 5px 8px;
-  border-radius: 4px;
-  font-size: 1em;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 0.8em;
   cursor: pointer;
   transition: background-color 0.3s;
   display: inline-flex;
@@ -81,18 +81,18 @@ footer a {
   border: 1px solid #333;
   border-radius: 5px;
   flex-direction: column;
-  padding: 5px 0;
+  padding: 4px 0;
   animation-duration: 0.4s;
 }
 
 .hover-menu a {
   color: white;
   text-decoration: none;
-  padding: 6px 12px;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.9em;
+  gap: 5px;
+  font-size: 0.8em;
   transition: background-color 0.2s;
 }
 
