@@ -18,12 +18,9 @@
   
     setTimeout(() => {
       const defaultText = `made with <span>&lt;3</span> by <a href="mailto:mauricio@boninno.com.ar">@mau</a> in 3 minutes`;
-    
-      if(showDefaultText) {
-        element.innerHTML = defaultText;
-      } else {
-        element.innerHTML = loadDateTime();
-      }
+      const dateTimeText = loadDateTime();
+
+      element.innerHTML = showDefaultText ? defaultText : dateTimeText;
 
       element.classList.remove("animate__fadeOut");
       element.classList.add("animate__fadeIn");
