@@ -73,15 +73,35 @@ footer a {
 .status .dnd { background-color: rgb(255, 124, 124); }
 .status .offline { background-color: rgb(177, 177, 177); }
 
-.profile-pic {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-left: 10px;
+.status-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
 }
 
-.user-name {
-  margin-left: 10px;
-  font-size: 1em;
-  color: white;
+.status:hover #status-menu {
+  display: block;
+}
+
+#profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+#username {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#activity {
+  font-size: 0.8em;
 }

@@ -1,5 +1,8 @@
   const statusDot = document.getElementById('status-dot');
   const statusText = document.getElementById('status-text');
+  const profileImage = document.getElementById('profile-image');
+  const username = document.getElementById('username');
+  const activity = document.getElementById('activity');
 
   const statusMap = {
     online: "I'm currently online",
@@ -15,13 +18,13 @@
       const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
       const { data } = await response.json();
       const status = data.discord_status;
-      const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${data.avatar}.png`;
-      const username = data.username;
   
       statusDot.className = `dot ${status}`;
       statusText.textContent = statusMap[status] || "Unknown status";
-      profilePic.src = avatarUrl;
-      userName.textContent = username;
+
+      profileImage.src = data.discord_user.avatar_url ? `https://cdn.discordapp.com/avatars/${userId}/${data.discord_user.avatar}.png` : "";
+      username.textContent = data.discord_user.username;
+      activity.textContent = data.listening_to_music ? `Listening to ${data.listening_to_music.name}` : "No activity";
     } catch (error) {
       statusText.textContent = "Failed to fetch status";
     }
