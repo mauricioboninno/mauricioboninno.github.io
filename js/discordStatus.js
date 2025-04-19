@@ -1,8 +1,8 @@
   const statusDot = document.getElementById('status-dot');
   const statusText = document.getElementById('status-text');
   const profileImage = document.getElementById('profile-image');
-  const username = document.getElementById('username');
-  const activity = document.getElementById('activity');
+  const username = document.getElementById('profile-username');
+  const activity = document.getElementById('profile-activity');
 
   const statusMap = {
     online: "I'm currently online",
