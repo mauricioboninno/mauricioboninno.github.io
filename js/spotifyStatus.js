@@ -1,4 +1,4 @@
-const accessToken = "aa855a0e6c5b40eb93019801d444f9e9";
+const accessToken = "aa855a0e6c5b40eb93019801d444f9e9";  // Sustituye por el token que obtuviste
 
 const container = document.getElementById("spotify-now-playing");
 const songTitle = document.getElementById("song-title");
