@@ -13,7 +13,8 @@ fetch(`https://api.lanyard.rest/v1/users/${userId}`)
       online: "Online",
       idle: "Idle",
       dnd: "Do not Disturb",
-      offline: "Offline"
+      offline: "Offline",
+      loading: "Loading",
     };
 
     text.textContent = statusMap[status] || "Failed to fetch status";
