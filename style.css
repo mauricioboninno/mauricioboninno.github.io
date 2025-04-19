@@ -73,7 +73,6 @@ footer a {
 .status .dnd { background-color: rgb(255, 124, 124); }
 .status .offline { background-color: rgb(177, 177, 177); }
 
-/* Show the menu on hover over the whole discord-status div */
 #discord-status:hover #status-menu {
   display: block;
 }
