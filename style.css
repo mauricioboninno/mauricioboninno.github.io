@@ -72,3 +72,7 @@ footer a {
 .status .idle { background-color: rgb(247, 203, 123); }
 .status .dnd { background-color: rgb(255, 124, 124); }
 .status .offline { background-color: rgb(177, 177, 177); }
+
+#status-text {
+  font-size: 0.85em;
+}
