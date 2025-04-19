@@ -19,5 +19,5 @@ fetch(`https://api.lanyard.rest/v1/users/${userId}`)
     text.textContent = statusMap[status] || "Failed to fetch status";
   })
   .catch(() => {
-    document.getElementById('status-text').textContent = "Error";
+    document.getElementById('status-text').textContent = "Failed to fetch status";
   });
