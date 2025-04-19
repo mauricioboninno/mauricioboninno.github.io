@@ -10,10 +10,10 @@ fetch(`https://api.lanyard.rest/v1/users/${userId}`)
     dot.className = 'dot ' + status;
 
     const statusMap = {
-      online: "Online",
+      online: "I'm currently online",
       idle: "Idle",
       dnd: "Do not Disturb",
-      offline: "Offline",
+      offline: "I'm currently offline",
     };
 
     text.textContent = statusMap[status] || "Failed to fetch status";
