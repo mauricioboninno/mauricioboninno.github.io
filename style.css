@@ -73,32 +73,7 @@ footer a {
 .status .dnd { background-color: red; }
 .status .offline { background-color: gray; }
 
-.status {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  align-items: center;
-  font-size: 1em;
-  font-family: 'Inter', sans-serif;
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 6px 10px;
-  border-radius: 8px;
-  z-index: 100;
-}
-
-.status .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.status #status-dot {
-  background-color: gray;
-}
-
-.status #spotify-logo {
+#spotify-logo {
   background-color: green;
 }
 
