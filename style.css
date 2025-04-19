@@ -56,7 +56,7 @@ footer a {
   align-items: center;
   font-size: 0.6em;
   font-family: 'Inter', sans-serif;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: transparent;
   padding: 6px 10px;
   border-radius: 8px;
 }
@@ -68,7 +68,7 @@ footer a {
   margin-right: 8px;
 }
 
-.status .online { background-color: green; }
-.status .idle { background-color: orange; }
-.status .dnd { background-color: red; }
+.status .online { background-color: rgb(88, 155, 88); }
+.status .idle { background-color: rgb(202, 166, 100); }
+.status .dnd { background-color: rgb(165, 79, 79); }
 .status .offline { background-color: gray; }
