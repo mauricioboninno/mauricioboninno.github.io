@@ -31,4 +31,4 @@
   }
 
   updateDiscordStatus();
-  setInterval(updateDiscordStatus, 1000);
+  setInterval(updateDiscordStatus, 3000);
