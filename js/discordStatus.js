@@ -22,7 +22,7 @@
       statusDot.className = `dot ${status}`;
       statusText.textContent = statusMap[status] || "Unknown status";
 
-      profileImage.src = data.discord_user.avatar_url ? `https://cdn.discordapp.com/avatars/${userId}/${data.discord_user.avatar}.png` : "";
+      profileImage.src = `https://cdn.discordapp.com/avatars/${userId}/${data.discord_user.avatar}.png`;
       profileUsername.textContent = data.discord_user.username;
       profileActivity.textContent = data.listening_to_music ? `Listening to ${data.listening_to_music.name}` : "No activity";
     } catch (error) {
