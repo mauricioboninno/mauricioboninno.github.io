@@ -72,36 +72,3 @@ footer a {
 .status .idle { background-color: rgb(247, 203, 123); }
 .status .dnd { background-color: rgb(255, 124, 124); }
 .status .offline { background-color: rgb(177, 177, 177); }
-
-#discord-status:hover #status-menu {
-  display: block;
-}
-
-.status-menu {
-  display: none;
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  width: 200px;
-  text-align: center;
-}
-
-#profile-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-#profile-username {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-#profile-activity {
-  font-size: 0.8em;
-}
