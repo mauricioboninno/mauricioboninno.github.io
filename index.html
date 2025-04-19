@@ -12,10 +12,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body>
+<body>  
   <div id="discord-status" class="status">
     <div id="status-dot" class="dot offline"></div>
-    <span id="status-text">Cargando...</span>
+    <span id="status-text">Fetching status</span>
+  </div>
+
+  <div id="spotify-now-playing" class="status">
+    <div id="spotify-logo" class="dot"></div>
+    <a href="#" id="song-title">Fetching spotify playing</a>
   </div>
   
   <div id="text"></div>
@@ -27,6 +32,7 @@
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
   <script type="module" src="js/discordStatus.js"></script>
+  <script type="module" src="js/spotifyStatus.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
