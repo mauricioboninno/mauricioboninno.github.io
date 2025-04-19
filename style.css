@@ -68,7 +68,7 @@ footer a {
   margin-right: 8px;
 }
 
-.status .online { background-color: rgb(88, 155, 88); }
-.status .idle { background-color: rgb(202, 166, 100); }
-.status .dnd { background-color: rgb(165, 79, 79); }
-.status .offline { background-color: gray; }
+.status .online { background-color: rgb(124, 243, 124); }
+.status .idle { background-color: rgb(247, 203, 123); }
+.status .dnd { background-color: rgb(255, 124, 124); }
+.status .offline { background-color: rgb(177, 177, 177); }

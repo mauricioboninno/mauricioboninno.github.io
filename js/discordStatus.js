@@ -1,23 +1,27 @@
-const userId = "1245158014969974930";
+  const statusDot = document.getElementById('status-dot');
+  const statusText = document.getElementById('status-text');
 
-fetch(`https://api.lanyard.rest/v1/users/${userId}`)
-  .then(res => res.json())
-  .then(data => {
-    const status = data.data.discord_status;
-    const dot = document.getElementById('status-dot');
-    const text = document.getElementById('status-text');
+  const statusMap = {
+    online: "I'm currently online",
+    idle: "Idle",
+    dnd: "Please, Do not disturb",
+    offline: "I'm currently offline",
+  };
 
-    dot.className = 'dot ' + status;
+  async function updateDiscordStatus() {
+    const userId = "1245158014969974930";
+  
+    try {
+      const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+      const { data } = await response.json();
+      const status = data.discord_status;
+  
+      statusDot.className = `dot ${status}`;
+      statusText.textContent = statusMap[status] || "Unknown status";
+    } catch (error) {
+      statusText.textContent = "Failed to fetch status";
+    }
+  }
 
-    const statusMap = {
-      online: "I'm currently online",
-      idle: "Idle",
-      dnd: "Do not Disturb",
-      offline: "I'm currently offline",
-    };
-
-    text.textContent = statusMap[status] || "Failed to fetch status";
-  })
-  .catch(() => {
-    document.getElementById('status-text').textContent = "Failed to fetch status";
-  });
+  updateDiscordStatus();
+  setInterval(updateDiscordStatus, 1000);
