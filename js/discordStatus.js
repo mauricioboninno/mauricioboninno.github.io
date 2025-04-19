@@ -15,9 +15,13 @@
       const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
       const { data } = await response.json();
       const status = data.discord_status;
+      const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${data.avatar}.png`;
+      const username = data.username;
   
       statusDot.className = `dot ${status}`;
       statusText.textContent = statusMap[status] || "Unknown status";
+      profilePic.src = avatarUrl;
+      userName.textContent = username;
     } catch (error) {
       statusText.textContent = "Failed to fetch status";
     }
