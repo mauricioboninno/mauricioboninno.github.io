@@ -73,6 +73,10 @@ footer a {
 .status .dnd { background-color: rgb(255, 124, 124); }
 .status .offline { background-color: rgb(177, 177, 177); }
 
+#discord-status:hover #status-menu {
+  display: block;
+}
+
 .status-menu {
   display: none;
   position: absolute;
@@ -84,10 +88,6 @@ footer a {
   border-radius: 8px;
   width: 200px;
   text-align: center;
-}
-
-.status:hover #status-menu {
-  display: block;
 }
 
 #profile-image {

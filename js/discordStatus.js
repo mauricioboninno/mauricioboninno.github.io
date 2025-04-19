@@ -1,8 +1,8 @@
   const statusDot = document.getElementById('status-dot');
   const statusText = document.getElementById('status-text');
   const profileImage = document.getElementById('profile-image');
-  const username = document.getElementById('profile-username');
-  const activity = document.getElementById('profile-activity');
+  const profileUsername = document.getElementById('profile-username');
+  const profileActivity = document.getElementById('profile-activity');
 
   const statusMap = {
     online: "I'm currently online",
@@ -23,8 +23,8 @@
       statusText.textContent = statusMap[status] || "Unknown status";
 
       profileImage.src = data.discord_user.avatar_url ? `https://cdn.discordapp.com/avatars/${userId}/${data.discord_user.avatar}.png` : "";
-      username.textContent = data.discord_user.username;
-      activity.textContent = data.listening_to_music ? `Listening to ${data.listening_to_music.name}` : "No activity";
+      profileUsername.textContent = data.discord_user.username;
+      profileActivity.textContent = data.listening_to_music ? `Listening to ${data.listening_to_music.name}` : "No activity";
     } catch (error) {
       statusText.textContent = "Failed to fetch status";
     }
