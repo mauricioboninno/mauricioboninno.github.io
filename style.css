@@ -34,9 +34,11 @@ body {
 footer {
   margin-top: 20px;
   font-size: 0.5em;
+  font-weight: bold;
   color: #888;
   position: absolute;
   bottom: 10px;
+  animation: blink 1.5s infinite;
 }
 
 footer a {
@@ -111,97 +113,4 @@ footer a {
 #status-text:hover {
   transform: scale(1.1);
   animation: none;
-}
-
-.menu-button {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background: transparent;
-  border: none;
-  color: #888;
-  font-size: 1.5em;
-  cursor: pointer;
-  z-index: 1001;
-  transition: left 0.3s ease, color 0.3s ease;
-}
-
-.menu-button:hover {
-  color: white;
-}
-
-.menu-button {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background: transparent;
-  border: none;
-  color: #888;
-  font-size: 1.5em;
-  cursor: pointer;
-  z-index: 1001;
-  transition: left 0.3s ease, color 0.3s ease;
-}
-
-.menu-button:hover {
-  color: white;
-}
-
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -200px;
-  width: auto;
-  background-color: rgba(20, 20, 20, 0.9);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 5px;
-  transition: left 0.3s ease;
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  animation: fadeOutMenu 0.6s ease forwards;
-}
-
-.menu-button:hover + .side-menu {
-  left: 0;
-  opacity: 1;
-  pointer-events: auto;
-  animation: fadeInMenu 0.6s ease forwards;
-}
-
-@keyframes fadeInMenu {
-  0% {
-    left: -200px;
-    opacity: 0;
-  }
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOutMenu {
-  0% {
-    left: 0;
-    opacity: 1;
-  }
-  100% {
-    left: -200px;
-    opacity: 0;
-  }
-}
-
-.menu-item {
-  color: #888;
-  font-size: 1em;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 5px 0;
-  margin: 0;
-}
-
-.menu-item:hover {
-  color: white;
 }
