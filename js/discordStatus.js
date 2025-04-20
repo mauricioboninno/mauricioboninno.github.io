@@ -7,8 +7,9 @@ const statusMap = {
   offline: "I'm currently offline",
 };
 
-function fetchStatus(newText) {
-  statusText.classList.remove("animate__fadeIn");
+function fetchStatus(newText, newClass) {
+  statusText.classList.remove("online", "idle", "dnd", "offline");
+  statusText.classList.add(newClass);
 
   void statusText.offsetWidth;
 
@@ -26,9 +27,10 @@ async function updateDiscordStatus() {
     const status = data.discord_status;
 
     const newText = statusMap[status] || fetchFailText;
+    const newClass = status.toLowerCase(); 
 
     if(statusText.textContent !== newText) {
-      fetchStatus(newText);
+      fetchStatus(newText, newClass);
     }
 
   } catch (error) {
