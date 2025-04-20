@@ -144,12 +144,26 @@ footer a {
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
+  animation: fadeInMenu 0.6s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .side-menu.open {
   left: 0;
   opacity: 1;
   pointer-events: auto;
+  animation: fadeInMenu 0.6s ease forwards;
+}
+
+@keyframes fadeInMenu {
+  0% {
+    left: -200px;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
 }
 
 .menu-item {
@@ -168,4 +182,5 @@ footer a {
   left: 0;
   opacity: 1;
   pointer-events: auto;
+  animation: fadeInMenu 0.6s ease forwards;
 }
