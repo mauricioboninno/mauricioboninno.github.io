@@ -17,7 +17,17 @@
       const status = data.discord_status;
   
       statusDot.className = `dot ${status}`;
-      statusText.textContent = statusMap[status] || "Unknown status";
+
+      const newText = statusMap[status] || "Unknown status";
+      if(statusText.textContent !== newText) {
+        statusText.classList.remove("animate__fadeIn");
+
+        void statusText.offsetWidth;
+
+        statusText.textContent = newText;
+        statusText.classList.add("animate__animated", "animate__fadeIn");
+      }
+
     } catch (error) {
       statusText.textContent = "Failed to fetch status";
     }
