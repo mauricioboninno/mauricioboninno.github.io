@@ -38,7 +38,7 @@
     for (const interval of intervals) {
       const count = Math.floor(seconds / interval.secs);
       if (count > 0) {
-        return `Offline since ${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
+        return `Offline ago ${count} ${interval.label}${count !== 1 ? 's' : ''}`;
       }
     }
     return "Just went offline";
@@ -55,7 +55,8 @@
       let newText = statusMap[status] || "Unknown status";
 
       if (status === "offline" && data.last_online) {
-        newText = timeSince(new Date(data.last_online));
+        const timeText = timeSince(new Date(data.last_online));
+        newText = `${statusMap[status]}, ${timeText}`;
       }
 
       statusDot.className = `dot ${status}`;
