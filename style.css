@@ -57,9 +57,8 @@ footer a {
   align-items: flex-start;
   gap: 8px;
   padding: 10px 12px;
-  background-color: rgba(255, 255, 255, 0.05); /* Fondo sutil */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Borde ligero */
-  border-radius: 10px;
+  background-color: transparent;
+  border: none;
   font-size: 0.6em;
 }
 
@@ -94,6 +93,7 @@ footer a {
   align-items: flex-start;
   gap: 4px;
   color: #888;
+  background-color: transparent;
 }
 
 .social-link {
@@ -101,9 +101,10 @@ footer a {
   color: #888;
   display: flex;
   align-items: center;
-  gap: 3px;
-  font-size: 0.65em;
+  gap: 4px;
+  font-size: 0.70em;
   transition: color 0.3s ease;
+  background-color: transparent;
 }
 
 .social-link:hover {
