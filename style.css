@@ -97,11 +97,6 @@ footer a {
   font-size: 1em;
   text-decoration: none;
   transition: color 0.3s ease;
-  transform: scale(0.9);
-}
-
-.social-link i {
-  font-size: 0.9em;
 }
 
 .social-link:hover {
