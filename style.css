@@ -78,14 +78,15 @@ footer a {
 }
 
 .social-links {
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 10px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   gap: 20px;
-  z-index: 10;
+  z-index: 1000;
+  pointer-events: auto;
 }
 
 .social-link {
@@ -97,4 +98,11 @@ footer a {
 
 .social-link:hover {
   color: white;
+}
+
+.status-container {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  z-index: 900;
 }
