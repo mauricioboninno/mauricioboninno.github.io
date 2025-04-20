@@ -4,8 +4,7 @@
     const now = new Date();
 
     return new Intl.DateTimeFormat('en-US', {
-      weekday: 'short',
-      year: 'numeric',
+      weekday: 'long',
       month: 'short',
       day: 'numeric',
       hour: '2-digit',
