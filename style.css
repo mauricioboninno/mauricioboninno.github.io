@@ -84,17 +84,17 @@ footer a {
   right: 0;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 25px;
   z-index: 1000;
   pointer-events: auto;
-  font-size: 0.3em;
+  font-size: 0.5em;
   opacity: 0;
   animation-fill-mode: forwards;
 }
 
 .social-link {
   color: #888;
-  font-size: 1em;
+  font-size: 1.2em;
   text-decoration: none;
   transition: color 0.3s ease;
 }
