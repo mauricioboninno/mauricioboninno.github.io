@@ -102,11 +102,8 @@ footer a {
 
 .status-container {
   position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
+  top: 10px;
+  left: 10px;
   z-index: 500;
 }
 
@@ -114,7 +111,6 @@ footer a {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 0.8em;
   font-size: 1em;
   color: white;
   font-weight: bold;
@@ -133,26 +129,6 @@ footer a {
   100% {
     opacity: 1;
   }
-}
-
-#status-text.online {
-  background-color: rgb(124, 243, 124);
-  border: 2px solid rgb(98, 213, 98);
-}
-
-#status-text.idle {
-  background-color: rgb(247, 203, 123);
-  border: 2px solid rgb(220, 180, 83);
-}
-
-#status-text.dnd {
-  background-color: rgb(255, 124, 124);
-  border: 2px solid rgb(220, 79, 79);
-}
-
-#status-text.offline {
-  background-color: rgb(177, 177, 177);
-  border: 2px solid rgb(140, 140, 140);
 }
 
 #status-text:hover {
