@@ -130,6 +130,23 @@ footer a {
   color: white;
 }
 
+.menu-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 1001;
+  transition: left 0.3s ease, color 0.3s ease;
+}
+
+.menu-button:hover {
+  color: white;
+}
+
 .side-menu {
   position: fixed;
   top: 0;
@@ -144,11 +161,10 @@ footer a {
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  animation: fadeInMenu 0.6s ease forwards;
-  animation-delay: 0.3s;
+  animation: fadeOutMenu 0.6s ease forwards;
 }
 
-.side-menu.open {
+.menu-button:hover + .side-menu {
   left: 0;
   opacity: 1;
   pointer-events: auto;
@@ -166,6 +182,17 @@ footer a {
   }
 }
 
+@keyframes fadeOutMenu {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -200px;
+    opacity: 0;
+  }
+}
+
 .menu-item {
   color: #888;
   font-size: 1em;
@@ -177,11 +204,4 @@ footer a {
 
 .menu-item:hover {
   color: white;
-}
-
-.menu-button:hover + .side-menu {
-  left: 0;
-  opacity: 1;
-  pointer-events: auto;
-  animation: fadeInMenu 0.6s ease forwards;
 }
