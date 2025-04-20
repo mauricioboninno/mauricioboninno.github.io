@@ -101,8 +101,8 @@ footer a {
   color: #888;
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.85em;
+  gap: 4px;
+  font-size: 0.75em;
   transition: color 0.3s ease;
 }
 
