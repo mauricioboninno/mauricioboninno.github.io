@@ -53,8 +53,7 @@ footer a {
   top: 10px;
   left: 10px;
   display: flex;
-  flex-direction: row !important;
-  gap: 6px;
+  flex-direction: row;
   align-items: center;
   font-size: 0.6em;
   font-family: 'Inter', sans-serif;
@@ -63,20 +62,28 @@ footer a {
   border-radius: 8px;
 }
 
-.status .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.status .online { background-color: rgb(124, 243, 124); }
-.status .idle { background-color: rgb(247, 203, 123); }
-.status .dnd { background-color: rgb(255, 124, 124); }
-.status .offline { background-color: rgb(177, 177, 177); }
-
 #status-text {
   font-size: 0.80em;
+  color: black;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+#status-text.online {
+  background-color: rgb(124, 243, 124);
+}
+
+#status-text.idle {
+  background-color: rgb(247, 203, 123);
+}
+
+#status-text.dnd {
+  background-color: rgb(255, 124, 124);
+}
+
+#status-text.offline {
+  background-color: rgb(177, 177, 177);
 }
 
 .social-links {
