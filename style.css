@@ -48,17 +48,27 @@ footer a {
   display: none !important;
 }
 
-.status {
+.status-container {
   position: absolute;
   top: 10px;
   left: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  background-color: rgba(255, 255, 255, 0.05); /* Fondo sutil */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Borde ligero */
+  border-radius: 10px;
   font-size: 0.6em;
-  font-family: 'Inter', sans-serif;
+}
+
+.status {
+  position: static;
+  display: flex;
+  align-items: center;
   background-color: transparent;
-  padding: 6px 10px;
-  border-radius: 8px;
+  padding: 0;
 }
 
 .status .dot {
@@ -78,15 +88,12 @@ footer a {
 }
 
 .social {
-  position: absolute;
-  top: 60px;
-  left: 10px;
+  position: static;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 0.6em;
+  gap: 4px;
   color: #888;
-  gap: 6px;
 }
 
 .social-link {
@@ -95,6 +102,7 @@ footer a {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 0.85em;
   transition: color 0.3s ease;
 }
 
