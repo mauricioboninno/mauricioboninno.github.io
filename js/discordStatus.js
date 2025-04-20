@@ -19,6 +19,7 @@
       statusDot.className = `dot ${status}`;
 
       const newText = statusMap[status] || "Unknown status";
+
       if(statusText.textContent !== newText) {
         statusText.classList.remove("animate__fadeIn");
 
@@ -26,6 +27,13 @@
 
         statusText.textContent = newText;
         statusText.classList.add("animate__animated", "animate__fadeIn");
+
+        statusDot.className = `dot ${status}`;
+        statusDot.classList.remove("animate__pulse");
+        
+        void statusDot.offsetWidth;
+
+        statusDot.classList.add("animate__animated", "animate__pulse");
       }
 
     } catch (error) {
