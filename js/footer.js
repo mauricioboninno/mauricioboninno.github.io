@@ -4,10 +4,10 @@
     const now = new Date();
 
     return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
       weekday: 'long',
       month: 'short',
       day: 'numeric',
-      hour: '2-digit',
     }).format(now);
   };
 
