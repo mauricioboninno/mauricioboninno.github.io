@@ -82,7 +82,8 @@ footer a {
 }
 
 .status-container {
-  margin-top: 0 15px;
+  margin-top: -5px;
+  padding: 0 15px;
 }
 
 #status-text {
