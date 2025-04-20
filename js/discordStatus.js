@@ -52,7 +52,7 @@
       const { data } = await response.json();
       const status = data.discord_status;
 
-      const newText = statusMap[status] || "Unknown status";
+      let newText = statusMap[status] || "Unknown status";
 
       if (status === "offline" && data.last_online) {
         newText = timeSince(new Date(data.last_online));
