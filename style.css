@@ -29,6 +29,7 @@ body {
 
 #text {
   white-space: pre-line;
+  font-size: 1.5em;
 }
 
 footer {
@@ -50,9 +51,36 @@ footer a {
   display: none !important;
 }
 
+.social {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #888;
+  background-color: transparent;
+}
+
+.social-link {
+  text-decoration: none;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.70em;
+  transition: color 0.3s ease;
+  background-color: transparent;
+}
+
+.social-link:hover {
+  color: white;
+}
+
 .status-container {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -87,31 +115,4 @@ footer a {
 
 #status-text {
   font-size: 0.80em;
-}
-
-.social {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  color: #888;
-  background-color: transparent;
-}
-
-.social-link {
-  text-decoration: none;
-  color: #888;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.70em;
-  transition: color 0.3s ease;
-  background-color: transparent;
-}
-
-.social-link:hover {
-  color: white;
 }
