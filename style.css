@@ -89,7 +89,7 @@ footer a {
   color: #888;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgb(255, 255, 255);
   animation: blink 1.5s infinite;
 }
 
