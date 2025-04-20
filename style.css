@@ -37,7 +37,6 @@ footer {
   color: #888;
   position: absolute;
   bottom: 10px;
-  animation: blink 1.5s infinite;
 }
 
 footer a {
