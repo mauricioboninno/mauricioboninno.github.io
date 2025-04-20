@@ -88,6 +88,8 @@ footer a {
   z-index: 1000;
   pointer-events: auto;
   font-size: 0.5em;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .social-link {
