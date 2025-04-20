@@ -74,32 +74,6 @@ footer a {
   color: white;
 }
 
-.social-links {
-  position: fixed;
-  top: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  z-index: 1000;
-  pointer-events: auto;
-  font-size: 0.5em;
-  opacity: 0;
-  animation-fill-mode: forwards;
-}
-
-.social-link {
-  color: #888;
-  font-size: 1.5em;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social-link:hover {
-  color: white;
-}
-
 .status-container {
   position: fixed;
   top: 10px;
@@ -111,7 +85,7 @@ footer a {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 1em;
+  font-size: 0.5em;
   color: white;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.2s ease-in-out;
