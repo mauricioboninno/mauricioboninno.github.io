@@ -87,7 +87,7 @@ footer a {
   gap: 15px;
   z-index: 1000;
   pointer-events: auto;
-  font-size: 0.5em;
+  font-size: 0.3em;
   opacity: 0;
   animation-fill-mode: forwards;
 }
@@ -97,6 +97,11 @@ footer a {
   font-size: 1em;
   text-decoration: none;
   transition: color 0.3s ease;
+  transform: scale(0.9);
+}
+
+.social-link i {
+  font-size: 0.9em;
 }
 
 .social-link:hover {
