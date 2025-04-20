@@ -1,115 +1,38 @@
-* {
-  box-sizing: border-box;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>null</title>
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
+  <link rel="icon" href="img/web-icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
 
-body {
-  background-color: black;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-size: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  cursor: none !important;
-}
+<body>
+  <div class="status-container animate__animated animate__fadeIn animate__slow">
+    <div id="discord-status" class="status">
+      <span id="status-text"></span>
+    </div>
+  </div>
 
-#text {
-  white-space: pre-line;
-}
+  <div class="social-links animate__animated animate__fadeIn animate__slow">
+    <a href="https://discord.com/users/1245158014969974930/" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+    <a href="https://github.com/mauricioboninno" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+</div>
+  
+  <div id="text"></div>
 
-footer {
-  margin-top: 20px;
-  font-size: 0.5em;
-  color: #888;
-  position: absolute;
-  bottom: 10px;
-}
+  <footer>
+    <span id="footer-text" class="animate__animated animate__fadeIn animate__slow"></span>
+  </footer>
 
-footer a {
-  color: #888;
-  text-decoration: none;
-}
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-.typed-cursor {
-  display: none !important;
-}
-
-.social-container {
-  position: fixed;
-  top: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  z-index: 1000;
-  pointer-events: auto;
-  opacity: 0;
-  animation-fill-mode: forwards;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  font-size: 0.5em;
-}
-
-.social-link {
-  color: #888;
-  font-size: 1.5em;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social-link:hover {
-  color: white;
-}
-
-.status-container {
-  margin-top: 5px;
-}
-
-#status-text {
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 0.5em !important;
-  color: #888;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  box-shadow: 0 4px 6px rgb(255, 255, 255);
-  animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-#status-text:hover {
-  transform: scale(1.1);
-  animation: none;
-}
+  <script type="module" src="js/discordStatus.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

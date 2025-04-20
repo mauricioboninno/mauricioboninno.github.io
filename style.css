@@ -48,19 +48,26 @@ footer a {
   display: none !important;
 }
 
-.social-links {
+.social-container {
   position: fixed;
   top: 10px;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   z-index: 1000;
   pointer-events: auto;
-  font-size: 0.5em;
   opacity: 0;
   animation-fill-mode: forwards;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 0.5em;
 }
 
 .social-link {
@@ -75,10 +82,7 @@ footer a {
 }
 
 .status-container {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 500;
+  margin-top: 5px;
 }
 
 #status-text {
