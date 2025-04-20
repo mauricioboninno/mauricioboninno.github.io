@@ -32,6 +32,11 @@ async function updateDiscordStatus() {
     if (statusText.textContent !== newText) {
       fetchStatus(newText, status);
     }
+
+    statusText.classList.remove("blink");
+    void statusText.offsetWidth;
+    statusText.classList.add("blink");
+
   } catch (error) {
     statusText.textContent = "Failed to fetch status";
   }

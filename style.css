@@ -64,7 +64,7 @@ footer a {
 
 #status-text {
   font-size: 0.80em;
-  color: black;
+  color: white;
   padding: 4px 10px;
   border-radius: 999px;
   font-weight: 600;
@@ -117,4 +117,14 @@ footer a {
   top: 30px;
   left: 10px;
   z-index: 900;
+}
+
+.blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
