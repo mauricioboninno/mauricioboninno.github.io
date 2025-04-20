@@ -7,38 +7,32 @@ const statusMap = {
   offline: "I'm currently offline",
 };
 
-function fetchStatus(newText, status) {
+function fetchStatus(newText) {
   statusText.classList.remove("animate__fadeIn");
+
   void statusText.offsetWidth;
 
   statusText.textContent = newText;
-
-  statusText.classList.remove("online", "idle", "dnd", "offline");
-  statusText.classList.add(status);
-
   statusText.classList.add("animate__animated", "animate__fadeIn");
 }
 
 async function updateDiscordStatus() {
   const userId = "1245158014969974930";
+  const fetchFailText = "Failed to fetch status";
 
   try {
-    const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+    const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);    
     const { data } = await response.json();
     const status = data.discord_status;
 
-    const newText = statusMap[status] || "Unknown status";
+    const newText = statusMap[status] || fetchFailText;
 
-    if (statusText.textContent !== newText) {
-      fetchStatus(newText, status);
+    if(statusText.textContent !== newText) {
+      fetchStatus(newText);
     }
 
-    statusText.classList.remove("blink");
-    void statusText.offsetWidth;
-    statusText.classList.add("blink");
-
   } catch (error) {
-    statusText.textContent = "Failed to fetch status";
+    statusText.textContent = fetchFailText;
   }
 }
 

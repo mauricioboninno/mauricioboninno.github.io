@@ -48,42 +48,30 @@ footer a {
   display: none !important;
 }
 
-.status {
-  position: absolute;
+.social-links {
+  position: fixed;
   top: 10px;
-  left: 10px;
+  left: 0;
+  right: 0;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 0.6em;
-  font-family: 'Inter', sans-serif;
-  background-color: transparent;
-  padding: 6px 10px;
-  border-radius: 8px;
+  justify-content: center;
+  gap: 15px;
+  z-index: 1000;
+  pointer-events: auto;
+  font-size: 0.5em;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
-#status-text {
-  font-size: 0.80em;
+.social-link {
+  color: #888;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
   color: white;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
-#status-text.online {
-  background-color: rgb(124, 243, 124);
-}
-
-#status-text.idle {
-  background-color: rgb(247, 203, 123);
-}
-
-#status-text.dnd {
-  background-color: rgb(255, 124, 124);
-}
-
-#status-text.offline {
-  background-color: rgb(177, 177, 177);
 }
 
 .social-links {
@@ -112,19 +100,51 @@ footer a {
   color: white;
 }
 
-.status-container {
-  position: absolute;
-  top: 30px;
-  left: 10px;
-  z-index: 900;
+#status-text {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1em;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: blink 1.5s infinite;
 }
 
-.blink {
-  animation: blink-animation 1s steps(2, start) infinite;
-}
-
-@keyframes blink-animation {
-  to {
-    visibility: hidden;
+@keyframes blink {
+  0% {
+    opacity: 1;
   }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#status-text.online {
+  background-color: rgb(124, 243, 124);
+  border: 2px solid rgb(98, 213, 98);
+}
+
+#status-text.idle {
+  background-color: rgb(247, 203, 123);
+  border: 2px solid rgb(220, 180, 83);
+}
+
+#status-text.dnd {
+  background-color: rgb(255, 124, 124);
+  border: 2px solid rgb(220, 79, 79);
+}
+
+#status-text.offline {
+  background-color: rgb(177, 177, 177);
+  border: 2px solid rgb(140, 140, 140);
+}
+
+#status-text:hover {
+  transform: scale(1.1);
+  animation: none;
 }
