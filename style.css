@@ -127,13 +127,13 @@ footer a {
   z-index: 1000;
 }
 
-.mute-button:hover + .volume-slider-container {
-  display: block;
+.mute-button:hover {
+  color: white;
 }
 
 .volume-slider-container {
   position: fixed;
-  bottom: 50px;
+  bottom: 15px;
   left: 10px;
   display: none;
   z-index: 1000;
