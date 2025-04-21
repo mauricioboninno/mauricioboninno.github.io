@@ -11,7 +11,8 @@
       initialTime: 126,
       loopStart: 127,
       loopEnd: 194,
-      defaultVolume: 0.5
+      defaultVolume: 0.5,
+      wasEverPlayed: false
     };
   
     constructor() {
@@ -28,6 +29,8 @@
   
       this.#setupEventListeners();
       this.#updateButtonIcon();
+
+      audio.load()
     }
   
     #setupEventListeners() {
