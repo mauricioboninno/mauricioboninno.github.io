@@ -1,32 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const muteButton = document.getElementById('mute-toggle');
-  const audio = document.getElementById('bg-audio');
-  const icon = muteButton.querySelector('i');
-
-  const initializeAudio = () => {
-    audio.currentTime = 0;
-    audio.volume = 0;
-    updateIcon(false);
-    updateButtonText(false);
+const audioToggleModule = (function() {
+  let audioElement;
+  let muteButton;
+  let iconElement;
+  
+  let isMuted = false;
+  
+  function handle(audioId, buttonId) {
+      audioElement = document.getElementById(audioId);
+      muteButton = document.getElementById(buttonId);
+      iconElement = muteButton.querySelector('i');
+      
+      if (!audioElement || !muteButton || !iconElement) {
+          console.error('Elementos no encontrados');
+          return;
+      }
+      
+      muteButton.addEventListener('click', toggleMute);
+      
+      updateUI();
+  }
+  
+  function toggleMute() {
+      isMuted = !isMuted;
+      
+      if (isMuted) {
+          audioElement.pause();
+      } else {
+          audioElement.play().catch(e => console.log('Autoplay prevenido:', e));
+      }
+      
+      updateUI();
+  }
+  
+  function updateUI() {
+      if (isMuted) {
+          iconElement.classList.remove('fa-volume-up');
+          iconElement.classList.add('fa-volume-mute');
+      } else {
+          iconElement.classList.remove('fa-volume-mute');
+          iconElement.classList.add('fa-volume-up');
+      }
+  }
+  
+  return {
+      init: init,
+      toggleMute: toggleMute
   };
+})();
 
-  const updateIcon = (isUnmuted) => {
-    icon.classList.toggle('fa-volume-up', isUnmuted);
-    icon.classList.toggle('fa-volume-mute', !isUnmuted);
-  };
-
-  const updateButtonText = (isUnmuted) => {
-    muteButton.textContent = isUnmuted ? 'Unmute' : 'Mute';
-  };
-
-  muteButton.addEventListener('click', () => {
-    const isMuted = audio.volume === 0;
-    audio.volume = isMuted ? 1 : 0;
-    if (isMuted) audio.play();
-
-    updateIcon(!isMuted);
-    updateButtonText(!isMuted);
-  });
-
-  initializeAudio();
+document.addEventListener('DOMContentLoaded', function() {
+  audioToggleModule.handle('bg-audio', 'mute-toggle');
 });
