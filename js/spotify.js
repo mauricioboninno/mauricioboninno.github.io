@@ -146,7 +146,7 @@ export class Spotify {
   }
 
   destroy() {
-    if (this.state.checkInterval) {
+    if(this.state.checkInterval) {
       clearInterval(this.state.checkInterval);
     }
   }
