@@ -178,3 +178,20 @@ footer a {
 .hidden {
   display: none !important;
 }
+
+spotify-widget {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.spotify-widget:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.spotify-widget i {
+  color: #1DB954;
+}
