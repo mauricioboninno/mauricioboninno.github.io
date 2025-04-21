@@ -1,62 +1,50 @@
-const muteButton = document.getElementById('mute-toggle');
-const audio = document.getElementById('bg-audio');
-const icon = muteButton.querySelector('i');
-const volumeSliderContainer = document.getElementById('volume-slider-container');
-const volumeSlider = document.getElementById('volume-slider');
+  const muteButton = document.getElementById('mute-toggle');
+  const audio = document.getElementById('bg-audio');
+  const icon = muteButton.querySelector('i');
+  const volumeSliderContainer = document.getElementById('volume-slider-container');
+  const volumeSlider = document.getElementById('volume-slider');
 
-const savedTime = localStorage.getItem('audioCurrentTime');
-if (savedTime !== null) {
-  audio.currentTime = parseFloat(savedTime);
-}
+  const initializeAudio = () => {
+    const savedTime = localStorage.getItem('audioCurrentTime');
+    const savedVolume = localStorage.getItem('audioVolume');
+  
+    if (savedTime) audio.currentTime = parseFloat(savedTime);
+    audio.volume = savedVolume ? parseFloat(savedVolume) : 0;
+  
+    updateIcon(audio.volume > 0);
+  };
 
-audio.volume = 0;
-icon.classList.remove('fa-volume-up');
-icon.classList.add('fa-volume-mute');
+  const updateIcon = (isUnmuted) => {
+    icon.classList.toggle('fa-volume-up', isUnmuted);
+    icon.classList.toggle('fa-volume-mute', !isUnmuted);
+  };
 
-let closeVolumeMenuTimeout;
-const closeVolumeMenu = () => {
-  volumeSliderContainer.style.display = 'none';
-};
+  const toggleVolumeMenu = (show) => {
+    volumeSliderContainer.style.display = show ? 'block' : 'none';
+  };
 
-muteButton.addEventListener('click', () => {
-  if (audio.volume === 0) {
-    audio.volume = 1;
-    audio.play();
-    icon.classList.remove('fa-volume-mute');
-    icon.classList.add('fa-volume-up');
+  const saveAudioState = () => {
+    localStorage.setItem('audioVolume', audio.volume);
+    localStorage.setItem('audioCurrentTime', audio.currentTime);
+  };
 
-    volumeSliderContainer.style.display = 'block';
+  muteButton.addEventListener('click', () => {
+    const isMuted = audio.volume === 0;
+    audio.volume = isMuted ? 1 : 0;
+    if (isMuted) audio.play();
+  
+    updateIcon(!isMuted);
+    toggleVolumeMenu(isMuted);
+  
+    saveAudioState();
+  });
 
-    clearTimeout(closeVolumeMenuTimeout);
-    closeVolumeMenuTimeout = setTimeout(closeVolumeMenu, 3000);
-  } else {
-    audio.volume = 0;
-    icon.classList.remove('fa-volume-up');
-    icon.classList.add('fa-volume-mute');
+  volumeSlider.addEventListener('input', (event) => {
+    audio.volume = parseFloat(event.target.value);
+    updateIcon(audio.volume > 0);
+  
+    saveAudioState();
+  });
 
-    closeVolumeMenu();
-  }
-
-  localStorage.setItem('audioVolume', audio.volume);
-});
-
-volumeSlider.addEventListener('input', (event) => {
-  audio.volume = event.target.value;
-
-  if (audio.volume > 0) {
-    icon.classList.remove('fa-volume-mute');
-    icon.classList.add('fa-volume-up');
-  } else {
-    icon.classList.remove('fa-volume-up');
-    icon.classList.add('fa-volume-mute');
-  }
-
-  clearTimeout(closeVolumeMenuTimeout);
-  closeVolumeMenuTimeout = setTimeout(closeVolumeMenu, 3000);
-
-  localStorage.setItem('audioVolume', audio.volume);
-});
-
-audio.addEventListener('timeupdate', () => {
-  localStorage.setItem('audioCurrentTime', audio.currentTime);
-});
+  audio.addEventListener('timeupdate', saveAudioState);
+  initializeAudio();
