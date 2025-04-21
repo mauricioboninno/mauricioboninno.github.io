@@ -6,13 +6,13 @@
 
   const initializeAudio = () => {
     const savedTime = localStorage.getItem('audioCurrentTime');
-    const savedVolume = localStorage.getItem('audioVolume');
-  
+    
     if(savedTime) audio.currentTime = parseFloat(savedTime);
-    audio.volume = savedVolume ? parseFloat(savedVolume) : 0;
   
-    updateIcon(audio.volume > 0);
-  };
+    audio.volume = 0;
+    updateIcon(false);
+    volumeSlider.value = 0;
+  }
 
   const updateIcon = (isUnmuted) => {
     icon.classList.toggle('fa-volume-up', isUnmuted);
