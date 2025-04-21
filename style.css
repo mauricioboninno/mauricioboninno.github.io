@@ -125,6 +125,7 @@ footer a {
   transition: color 0.3s ease;
   padding: 0;
   z-index: 1000;
+  animation: blink 1.5s infinite;
 }
 
 .mute-button:hover {
