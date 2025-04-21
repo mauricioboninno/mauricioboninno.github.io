@@ -369,18 +369,20 @@ footer a {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #222;
-  border-radius: 8px;
-  padding: 12px;
+  background: linear-gradient(145deg, rgba(40,40,40,0.85), rgba(20,20,20,0.85));
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 14px;
   width: 280px;
   max-width: 90vw;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   z-index: 1001;
   pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .spotify-link-container:hover .spotify-menu {
