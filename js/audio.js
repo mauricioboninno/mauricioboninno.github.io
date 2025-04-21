@@ -106,19 +106,14 @@
     async startAudio() {
       const { audio } = this.#elements;
       const { initialTime } = this.#state;
-
-      audio.currentTime = initialTime;
-      await audio.play();
-      this.#state.isPlaying = true;
-      this.#updateButtonIcon();
   
-      /*try {
+      try {
         audio.currentTime = initialTime;
         await audio.play();
         this.#state.isPlaying = true;
         this.#updateButtonIcon();
       } catch (error) {
         console.log(error);
-      }*/
+      }
     }
   }
