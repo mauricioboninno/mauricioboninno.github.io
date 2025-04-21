@@ -1,4 +1,4 @@
-  export class AudioPlayer {
+  export class Audio {
     #elements = {
       muteToggle: document.getElementById('mute-toggle'),
       audio: document.getElementById('bg-audio'),

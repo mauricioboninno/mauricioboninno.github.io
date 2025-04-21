@@ -1,17 +1,21 @@
   import { Quotes } from './quotes.js';
   import { Footer } from './footer.js';
   import { Discord } from './discord.js';
-  import { AudioPlayer } from './audio.js';
+  import { Audio } from './audio.js';
 
-  const quotes = new Quotes();
-  quotes.startCycling
+  function initializeApp() {
+    const modules = [
+        { instance: new Quotes(), method: 'startCycling' },
+        { instance: new Footer(), method: 'startCycling' },
+        { instance: new Discord(), method: 'startTracking' },
+        { instance: new Audio(), method: 'startAudio' }
+    ];
 
-  const footer = new Footer();
-  footer.startCycling();
-
-  const discord = new Discord();
-  discord.startTracking()
-
-  const audio = new AudioPlayer();
-  audio.startAudio();
+    modules.forEach(({ instance, method }) => {
+        if(typeof instance[method] === 'function') {
+            instance[method]();
+        }
+    });
+  }
+  initializeApp();
 
