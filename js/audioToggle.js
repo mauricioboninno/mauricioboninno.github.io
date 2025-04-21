@@ -1,20 +1,34 @@
-  const muteButton = document.getElementById('mute-toggle');
-  const audio = document.getElementById('bg-audio');
-  const icon = muteButton.querySelector('i');
+  const audio = document.getElementById("bg-audio");
+  const muteBtn = document.getElementById("mute-toggle");
+  const volumeSlider = document.getElementById("volume-slider");
 
-  audio.volume = 0;
-  icon.classList.remove('fa-volume-up');
-  icon.classList.add('fa-volume-mute');
+  const savedVolume = localStorage.getItem("bg-volume");
+  const initialVolume = savedVolume !== null ? parseFloat(savedVolume) : 0.3;
+  audio.volume = initialVolume;
+  volumeSlider.value = initialVolume;
 
-  muteButton.addEventListener('click', () => {
-    if (audio.volume === 0) {
-      audio.volume = 1;
-      audio.play();
-      icon.classList.remove('fa-volume-mute');
-      icon.classList.add('fa-volume-up');
-    } else {
-      audio.volume = 0;
-      icon.classList.remove('fa-volume-up');
-      icon.classList.add('fa-volume-mute');
-    }
+  updateIcon();
+
+  muteBtn.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    updateIcon();
   });
+
+  volumeSlider.addEventListener("input", () => {
+    const newVolume = parseFloat(volumeSlider.value);
+    audio.volume = newVolume;
+    audio.muted = newVolume === 0;
+    localStorage.setItem("bg-volume", newVolume.toString());
+    updateIcon();
+  });
+
+  function updateIcon() {
+    const icon = muteBtn.querySelector("i");
+    if (audio.muted || audio.volume === 0) {
+      icon.classList.remove("fa-volume-up");
+      icon.classList.add("fa-volume-mute");
+    } else {
+      icon.classList.remove("fa-volume-mute");
+      icon.classList.add("fa-volume-up");
+    }
+  }

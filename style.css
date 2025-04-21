@@ -126,3 +126,24 @@ footer a {
 .mute-button:hover {
   color: white;
 }
+
+.audio-control {
+  position: relative;
+  display: inline-block;
+}
+
+#volume-slider {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  display: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.audio-control:hover #volume-slider {
+  display: block;
+  opacity: 1;
+}
