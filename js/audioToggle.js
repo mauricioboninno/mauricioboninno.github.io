@@ -30,6 +30,7 @@ volumeSlider.addEventListener('input', function () {
   audio.volume = parseFloat(this.value);
   audio.muted = false;
   updateButtonIcon();
+  console.log("Volume changed to:", audio.volume);
 });
 
 function updateButtonIcon() {
