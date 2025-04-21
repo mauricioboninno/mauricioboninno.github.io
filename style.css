@@ -133,13 +133,10 @@ footer a {
 
 .volume-slider-container {
   position: fixed;
-  bottom: 45px;
+  bottom: 50px;
   left: 10px;
   display: none;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 8px;
-  border-radius: 6px;
 }
 
 #volume-slider {
@@ -162,4 +159,3 @@ footer a {
   border-radius: 50%;
   cursor: pointer;
 }
-
