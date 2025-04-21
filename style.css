@@ -133,19 +133,21 @@ footer a {
 
 .volume-menu {
   position: fixed;
-  bottom: 35px;
-  left: 90px;
+  bottom: 20px;
+  left: 45px;
   background: none;
   border: none;
   border-radius: 10px;
   padding: 0;
   z-index: 999;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .volume-menu input[type="range"] {
-  width: 100px;
+  width: 5px;
+  height: 100px;
   accent-color: white;
   background: #888;
   border-radius: 5px;
