@@ -14,7 +14,8 @@
   discord.startTracking()
 
   const audio = new AudioPlayer();
-  const overlay = new Overlay();
+  audio.startAudio();
 
-  overlay.initialize(() => audio.startAudio());
+  const overlay = new Overlay();
+  overlay.initialize(() => document.getElementById('bg-audio').play());
 
