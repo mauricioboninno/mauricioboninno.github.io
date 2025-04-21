@@ -32,7 +32,7 @@ export class Quotes {
         ...this.config.typingOptions
       });
     } catch (error) {
-      console.error('Error initializing Typed.js:', error);
+      console.error('Error initializing Typed:', error);
     }
   }
 
