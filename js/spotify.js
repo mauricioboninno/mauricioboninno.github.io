@@ -34,7 +34,7 @@
       const data = await response.json();
       
       if(!data?.recenttracks?.track?.length) {
-        throw new Error('No hay datos de canciones');
+        throw new Error('No recent tracks found');
       }
 
       const track = data.recenttracks.track[0];
