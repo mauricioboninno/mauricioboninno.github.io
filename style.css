@@ -121,7 +121,7 @@ footer a {
   border: none;
   cursor: pointer;
   color: #888;
-  font-size: 1.2em;
+  font-size: 1em;
   transition: color 0.3s ease;
   padding: 0;
   z-index: 1000;
@@ -129,4 +129,28 @@ footer a {
 
 .mute-button:hover {
   color: white;
+}
+
+.volume-menu {
+  position: fixed;
+  bottom: 50px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #888;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+
+.volume-menu input[type="range"] {
+  width: 100px;
+  accent-color: white;
+  background: #888;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
 }
