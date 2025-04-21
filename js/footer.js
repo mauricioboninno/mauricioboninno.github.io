@@ -1,38 +1,60 @@
-  const element = document.getElementById("footer-text");
+  export class Footer {
+    static #INTERVALS = {
+      ANIMATION_DURATION: 500,
+      CYCLE_INTERVAL: 15000
+    };
+  
+    #element;
+    #showDefaultText = true;
+    #intervalId = null;
 
-  const loadDateTime = () => {
-    const now = new Date();
+    constructor(elementId = "footer-text") {
+      this.#element = document.getElementById(elementId);
 
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      weekday: 'long',
-      month: 'short',
-      day: 'numeric',
-    }).format(now);
-  };
+      if(!this.#element) {
+        throw new Error(`Element with ID '${elementId}' not found`);
+      }
+    }
 
-  const parseFooterType = (isDefaultText, defaultText, dateTimeText) => {
-    element.innerHTML = isDefaultText ? defaultText : dateTimeText;
-  };
+    #getFormattedDate() {
+      const now = new Date();
+      return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric'
+      }).format(now);
+    }
 
-  let showDefaultText = true;
+    #toggleContent() {
+      this.#element.classList.replace("animate__fadeIn", "animate__fadeOut");
 
-  function updateFooterType() {
-    element.classList.replace("animate__fadeIn", "animate__fadeOut");
+      const defaultText = `made with 🤍 by <a href="mailto:mauricio@boninno.com.ar">@mau</a>`;
     
-    const defaultText = `made with 🤍 by <a href="mailto:mauricio@boninno.com.ar">@mau</a>`;
-    const dateTimeText = loadDateTime();
-  
-    setTimeout(() => {
-      parseFooterType(showDefaultText, defaultText, dateTimeText)
+      setTimeout(() => {
+        this.#element.innerHTML = this.#showDefaultText ? defaultText : this.#getFormattedDate();
       
-      element.classList.replace("animate__fadeOut", "animate__fadeIn");
-  
-      showDefaultText = !showDefaultText;
-    }, 500);
-  }
+        this.#element.classList.replace("animate__fadeOut", "animate__fadeIn");
+        this.#showDefaultText = !this.#showDefaultText;
+      }, Footer.#INTERVALS.ANIMATION_DURATION);
+    }
 
-  export function handleFooterCycling() {
-    setInterval(updateFooterType, 15000);
-    updateFooterType();
+    startCycling() {
+      if(this.#intervalId) return;
+    
+      this.#toggleContent();
+      this.#intervalId = setInterval(() => this.#toggleContent(), Footer.#INTERVALS.CYCLE_INTERVAL);
+    }
+
+    stopCycling() {
+      if(this.#intervalId) {
+        clearInterval(this.#intervalId);
+        this.#intervalId = null;
+      }
+    }
+
+    destroy() {
+      this.stopCycling();
+      this.#element = null;
+    }
   }
