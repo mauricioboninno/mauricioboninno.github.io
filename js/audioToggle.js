@@ -5,10 +5,7 @@
   const volumeSlider = document.getElementById('volume-slider');
 
   const initializeAudio = () => {
-    const savedTime = localStorage.getItem('audioCurrentTime');
-    
-    if(savedTime) audio.currentTime = parseFloat(savedTime);
-  
+    audio.currentTime = 0;
     audio.volume = 0;
     updateIcon(false);
     volumeSlider.value = 0;
@@ -21,11 +18,6 @@
 
   const toggleVolumeMenu = (show) => {
     volumeSliderContainer.style.display = show ? 'block' : 'none';
-  };
-
-  const saveAudioState = () => {
-    localStorage.setItem('audioVolume', audio.volume);
-    localStorage.setItem('audioCurrentTime', audio.currentTime);
   };
 
   muteButton.addEventListener('click', () => {
@@ -42,9 +34,6 @@
   volumeSlider.addEventListener('input', (event) => {
     audio.volume = parseFloat(event.target.value);
     updateIcon(audio.volume > 0);
-  
-    saveAudioState();
   });
 
-  audio.addEventListener('timeupdate', saveAudioState);
   initializeAudio();
