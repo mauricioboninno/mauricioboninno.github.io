@@ -367,7 +367,7 @@ footer a {
 
 .spotify-menu {
   position: absolute;
-  top: 100%;
+  top: 150%;
   left: 50%;
   transform: translate(-50%, 10px);
   background: linear-gradient(145deg, rgba(40,40,40,0.85), rgba(20,20,20,0.85));
