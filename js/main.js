@@ -2,6 +2,7 @@
   import { Footer } from './footer.js';
   import { Discord } from './discord.js';
   import { AudioPlayer } from './audio.js';
+  import { Overlay } from './overlay.js';
 
   const quotes = new Quotes();
   quotes.startCycling
@@ -13,4 +14,7 @@
   discord.startTracking()
 
   const audio = new AudioPlayer();
-  audio.startAudio();
+  const overlay = new Overlay();
+
+  overlay.initialize(() => audio.startAudio());
+
