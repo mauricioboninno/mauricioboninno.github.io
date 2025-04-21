@@ -44,7 +44,7 @@
       const { audio } = this.#elements;
       const { isPlaying, initialTime } = this.#state;
   
-      if (!isPlaying) {
+      if(!isPlaying) {
         audio.currentTime = initialTime;
         try {
           await audio.play();
@@ -71,7 +71,7 @@
   
     #handleDocumentClick(e) {
       const { volumeMenu, muteToggle } = this.#elements;
-      if (!volumeMenu.contains(e.target) && e.target !== muteToggle) {
+      if(!volumeMenu.contains(e.target) && e.target !== muteToggle) {
         volumeMenu.classList.add('hidden');
       }
     }
@@ -80,7 +80,7 @@
       const { audio } = this.#elements;
       const { loopEnd, loopStart } = this.#state;
   
-      if (audio.currentTime >= loopEnd) {
+      if(audio.currentTime >= loopEnd) {
         audio.currentTime = loopStart;
         try {
           await audio.play();

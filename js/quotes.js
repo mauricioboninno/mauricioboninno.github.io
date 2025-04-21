@@ -39,14 +39,14 @@ export class Quotes {
   }
 
   destroy() {
-    if (this.#typedInstance) {
+    if(this.#typedInstance) {
       this.#typedInstance.destroy();
       this.#typedInstance = null;
     }
   }
 
   updateQuotes(newQuotes) {
-    if (this.#typedInstance) {
+    if(this.#typedInstance) {
       this.destroy();
       this.config.quotes = newQuotes;
       this.#init();
