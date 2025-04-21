@@ -1,59 +1,97 @@
-  const muteToggle = document.getElementById('mute-toggle');
-  const audio = document.getElementById('bg-audio');
-  const volumeMenu = document.getElementById('volume-menu');
-  const volumeSlider = document.getElementById('volume-slider');
+  const audioControls = {
+    elements: {
+      muteToggle: document.getElementById('mute-toggle'),
+      audio: document.getElementById('bg-audio'),
+      volumeMenu: document.getElementById('volume-menu'),
+      volumeSlider: document.getElementById('volume-slider')
+    },
+    state: {
+      isPlaying: false,
+      initialTime: 126,
+      loopStart: 127,
+      loopEnd: 194,
+      defaultVolume: 0.5
+    },
 
-  let isPlaying = false;
+    init() {
+      const { audio, volumeMenu, volumeSlider } = this.elements;
+      const { defaultVolume } = this.state;
 
-  volumeMenu.classList.add('hidden');
+      volumeMenu.classList.add('hidden');
+      audio.volume = defaultVolume;
+      volumeSlider.value = defaultVolume;
 
-  audio.volume = 0.5;
-  volumeSlider.value = audio.volume;
+      this.setupEventListeners();
+      this.updateButtonIcon();
+    },
 
-  muteToggle.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (!isPlaying) {
-      audio.currentTime = 126;
-      audio.play().then(() => {
-        isPlaying = true;
-        audio.muted = false;
-        updateButtonIcon();
-        toggleVolumeMenu();
-      }).catch(e => console.log(e));
-    } else {
-      audio.muted = !audio.muted;
-      updateButtonIcon();
-      toggleVolumeMenu();
-    }
-  });
+    setupEventListeners() {
+      const { muteToggle, audio, volumeSlider, volumeMenu } = this.elements;
 
-  volumeSlider.addEventListener('input', function () {
-    audio.volume = parseFloat(this.value);
+      muteToggle.addEventListener('click', (e) => this.handleMuteToggle(e));
+      volumeSlider.addEventListener('input', () => this.handleVolumeChange());
+      document.addEventListener('click', (e) => this.handleDocumentClick(e));
+      audio.addEventListener('timeupdate', () => this.handleAudioLoop());
+    },
+
+    handleMuteToggle(e) {
+      e.stopPropagation();
+      const { audio } = this.elements;
+      const { isPlaying, initialTime } = this.state;
+
+      if (!isPlaying) {
+        audio.currentTime = initialTime;
+        audio.play()
+          .then(() => {
+            this.state.isPlaying = true;
+            audio.muted = false;
+            this.updateButtonIcon();
+            this.toggleVolumeMenu();
+          })
+          .catch(console.error);
+      } else {
+        audio.muted = !audio.muted;
+        this.updateButtonIcon();
+        this.toggleVolumeMenu();
+      }
+    },
+
+  handleVolumeChange() {
+    const { audio, volumeSlider } = this.elements;
+    audio.volume = parseFloat(volumeSlider.value);
     audio.muted = false;
-    updateButtonIcon();
-  });
+    this.updateButtonIcon();
+  },
 
-  function updateButtonIcon() {
-    const icon = muteToggle.querySelector('i');
-    icon.classList.toggle('fa-volume-mute', audio.muted || !isPlaying);
-    icon.classList.toggle('fa-volume-up', !audio.muted && isPlaying);
-  }
-
-  function toggleVolumeMenu() {
-    volumeMenu.classList.toggle('hidden');
-  }
-
-  document.addEventListener('click', (e) => {
+  handleDocumentClick(e) {
+    const { volumeMenu, muteToggle } = this.elements;
     if (!volumeMenu.contains(e.target) && e.target !== muteToggle) {
       volumeMenu.classList.add('hidden');
     }
-  });
+  },
 
-  updateButtonIcon();
-
-  audio.addEventListener('timeupdate', function () {
-    if(audio.currentTime >= 194) {
-      audio.currentTime = 127;
-      audio.play().catch(e => console.log(e));
+  handleAudioLoop() {
+    const { audio } = this.elements;
+    const { loopEnd, loopStart } = this.state;
+    
+    if (audio.currentTime >= loopEnd) {
+      audio.currentTime = loopStart;
+      audio.play().catch(console.error);
     }
-  });
+  },
+
+    updateButtonIcon() {
+      const { muteToggle, audio } = this.elements;
+      const { isPlaying } = this.state;
+      const icon = muteToggle.querySelector('i');
+    
+      icon.classList.toggle('fa-volume-mute', audio.muted || !isPlaying);
+      icon.classList.toggle('fa-volume-up', !audio.muted && isPlaying);
+    },
+
+    toggleVolumeMenu() {
+      this.elements.volumeMenu.classList.toggle('hidden');
+    }
+  };
+
+  audioControls.init();
