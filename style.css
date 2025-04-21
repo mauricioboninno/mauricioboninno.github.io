@@ -114,9 +114,6 @@ footer a {
 }
 
 .mute-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
   background: none;
   border: none;
   cursor: pointer;
