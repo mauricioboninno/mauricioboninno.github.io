@@ -18,6 +18,10 @@
       <a href="https://discord.com/users/1245158014969974930/" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
       <a href="https://github.com/mauricioboninno" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
       <a href="https://open.spotify.com/user/31necxuslxro3alskw73mnsfrioa?si=c1502ad9442b4433" target="_blank" class="social-link"><i class="fab fa-spotify"></i></a>
+    
+      <button id="mute-toggle" class="social-link mute-button" aria-label="Toggle mute">
+        <i class="fas fa-volume-mute"></i>
+      </button>
     </div>
     
     <div class="status-container">
@@ -26,6 +30,8 @@
       </div>
     </div>
   </div>
+
+  <audio id="bg-audio" src="img/song.mp4" loop></audio>
   
   <div id="text"></div>
 
@@ -37,5 +43,6 @@
 
   <script type="module" src="js/discordStatus.js"></script>
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/audioToggle.js"></script>
 </body>
 </html>
