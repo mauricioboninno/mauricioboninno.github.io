@@ -149,6 +149,28 @@ footer a {
   accent-color: white;
   background: #888;
   border-radius: 5px;
+  appearance: none;
+  height: 5px;
+  outline: none;
+  margin: 0 10px;
+}
+
+.volume-menu input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-menu input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .hidden {
