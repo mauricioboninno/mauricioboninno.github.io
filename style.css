@@ -125,9 +125,10 @@ footer a {
   transition: color 0.3s ease;
   padding: 0;
   z-index: 1000;
-  width: 24px;
-  height: 24px;
-  display: flex;
+  width: auto;
+  height: auto;
+  line-height: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
