@@ -41,24 +41,28 @@
   
     async #handleMuteToggle(e) {
       e.stopPropagation();
-      const { audio } = this.#elements;
-      const { isPlaying, initialTime } = this.#state;
+
+      const { audio, muteToggle } = this.#elements;
+      const { initialTime } = this.#state;
+
+      muteToggle.disabled = true;
   
-      if(!isPlaying) {
-        audio.currentTime = initialTime;
-        try {
+      try {
+        if (audio.paused || audio.ended) {
+          audio.currentTime = initialTime;
           await audio.play();
           this.#state.isPlaying = true;
           audio.muted = false;
-          this.#updateButtonIcon();
-          this.#toggleVolumeMenu();
-        } catch (error) {
-          console.error(error);
+        } else {
+          audio.muted = !audio.muted;
         }
-      } else {
-        audio.muted = !audio.muted;
+  
         this.#updateButtonIcon();
         this.#toggleVolumeMenu();
+      } catch (error) {
+        console.error('Failed to load the audio => ', error);
+      } finally {
+        muteToggle.disabled = false;
       }
     }
   
