@@ -13,9 +13,7 @@ export class Quotes {
       backSpeed: 75,
       smartBackspace: true,
       shuffle: false,
-      backDelay: 1500,
-      showCursor: true,
-      cursorChar: '|'
+      backDelay: 1500
     }
   };
 
