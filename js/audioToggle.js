@@ -1,49 +1,51 @@
-  const muteToggle = document.getElementById('mute-toggle');
-  const audio = document.getElementById('bg-audio');
-  const volumeMenu = document.getElementById('volume-menu');
-  const volumeSlider = document.getElementById('volume-slider');
+const muteToggle = document.getElementById('mute-toggle');
+const audio = document.getElementById('bg-audio');
+const volumeMenu = document.getElementById('volume-menu');
+const volumeSlider = document.getElementById('volume-slider');
 
-  let isPlaying = false;
+let isPlaying = false;
 
-  audio.volume = 0.5;
-  volumeSlider.value = audio.volume;
+volumeMenu.classList.add('hidden');
 
-  muteToggle.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (!isPlaying) {
-      audio.play().then(() => {
-        isPlaying = true;
-        audio.muted = false;
-        updateButtonIcon();
-        toggleVolumeMenu();
-      }).catch(e => console.log("Error al reproducir audio:", e));
-    } else {
-      audio.muted = !audio.muted;
+audio.volume = 0.5;
+volumeSlider.value = audio.volume;
+
+muteToggle.addEventListener('click', function (e) {
+  e.stopPropagation();
+  if (!isPlaying) {
+    audio.play().then(() => {
+      isPlaying = true;
+      audio.muted = false;
       updateButtonIcon();
       toggleVolumeMenu();
-    }
-  });
-
-  volumeSlider.addEventListener('input', function () {
-    audio.volume = parseFloat(this.value);
-    audio.muted = false;
+    }).catch(e => console.log("Error al reproducir audio:", e));
+  } else {
+    audio.muted = !audio.muted;
     updateButtonIcon();
-  });
-
-  function updateButtonIcon() {
-    const icon = muteToggle.querySelector('i');
-    icon.classList.toggle('fa-volume-mute', audio.muted || !isPlaying);
-    icon.classList.toggle('fa-volume-up', !audio.muted && isPlaying);
+    toggleVolumeMenu();
   }
+});
 
-  function toggleVolumeMenu() {
-    volumeMenu.classList.toggle('hidden');
-  }
-
-  document.addEventListener('click', (e) => {
-    if (!volumeMenu.contains(e.target) && e.target !== muteToggle) {
-      volumeMenu.classList.add('hidden');
-    }
-  });
-
+volumeSlider.addEventListener('input', function () {
+  audio.volume = parseFloat(this.value);
+  audio.muted = false;
   updateButtonIcon();
+});
+
+function updateButtonIcon() {
+  const icon = muteToggle.querySelector('i');
+  icon.classList.toggle('fa-volume-mute', audio.muted || !isPlaying);
+  icon.classList.toggle('fa-volume-up', !audio.muted && isPlaying);
+}
+
+function toggleVolumeMenu() {
+  volumeMenu.classList.toggle('hidden');
+}
+
+document.addEventListener('click', (e) => {
+  if (!volumeMenu.contains(e.target) && e.target !== muteToggle) {
+    volumeMenu.classList.add('hidden');
+  }
+});
+
+updateButtonIcon();
