@@ -48,7 +48,7 @@
       muteToggle.disabled = true;
   
       try {
-        if (audio.paused || audio.ended) {
+        if(audio.paused || audio.ended) {
           audio.currentTime = initialTime;
           await audio.play();
           this.#state.isPlaying = true;
@@ -117,7 +117,7 @@
         this.#state.isPlaying = true;
         this.#updateButtonIcon();
       } catch (error) {
-        console.log(error);
+        console.error('Failed to load the audio => ', error);
       }
     }
   }
