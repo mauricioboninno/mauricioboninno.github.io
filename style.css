@@ -133,7 +133,7 @@ footer a {
 
 .volume-slider-container {
   position: fixed;
-  bottom: 15px;
+  bottom: 45px;
   left: 10px;
   display: none;
   z-index: 1000;
