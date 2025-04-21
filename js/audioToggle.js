@@ -13,10 +13,6 @@
     icon.classList.toggle('fa-volume-mute', !isUnmuted);
   };
 
-  const toggleVolumeMenu = (show) => {
-    volumeSliderContainer.style.display = show ? 'block' : 'none';
-  };
-
   muteButton.addEventListener('click', () => {
     const isMuted = audio.volume === 0;
     audio.volume = isMuted ? 1 : 0;
