@@ -109,15 +109,20 @@
   
     async startAudio() {
       const { audio } = this.#elements;
-      const { initialTime } = this.#state;
+      const { initialTime, wasEverPlayed } = this.#state;
   
-      try {
-        audio.currentTime = initialTime;
-        await audio.play();
-        this.#state.isPlaying = true;
-        this.#updateButtonIcon();
-      } catch (error) {
-        console.error('Failed to load the audio => ', error);
+      if (!wasEverPlayed) {
+        try {
+          audio.currentTime = initialTime;
+          await audio.play();
+          this.#state.isPlaying = true;
+          this.#state.wasEverPlayed = true;
+          this.#updateButtonIcon();
+        } catch (error) {
+          console.log('Autoplay blocked, waiting for user interaction');
+          this.#state.isPlaying = false;
+          this.#updateButtonIcon();
+        }
       }
     }
   }
