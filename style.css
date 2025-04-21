@@ -131,3 +131,32 @@ footer a {
   color: white;
 }
 
+.volume-slider-container {
+  position: fixed;
+  bottom: 50px;
+  left: 10px;
+  display: none;
+  z-index: 1000;
+}
+
+#volume-slider {
+  width: 100px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #888;
+  height: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
