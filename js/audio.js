@@ -111,7 +111,7 @@
       const { audio } = this.#elements;
       const { initialTime, wasEverPlayed } = this.#state;
   
-      if (!wasEverPlayed) {
+      if(!wasEverPlayed) {
         try {
           audio.currentTime = initialTime;
           await audio.play();
