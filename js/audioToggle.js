@@ -7,11 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     audio.currentTime = 0;
     audio.volume = 0;
     updateIcon(false);
+    updateButtonText(false);
   };
 
   const updateIcon = (isUnmuted) => {
     icon.classList.toggle('fa-volume-up', isUnmuted);
     icon.classList.toggle('fa-volume-mute', !isUnmuted);
+  };
+
+  const updateButtonText = (isUnmuted) => {
+    muteButton.textContent = isUnmuted ? 'Unmute' : 'Mute';
   };
 
   muteButton.addEventListener('click', () => {
@@ -20,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isMuted) audio.play();
 
     updateIcon(!isMuted);
+    updateButtonText(!isMuted);
   });
 
   initializeAudio();
