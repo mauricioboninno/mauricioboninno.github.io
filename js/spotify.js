@@ -29,7 +29,7 @@
         `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${this.lastfmUser}&api_key=${this.lastfmApiKey}&format=json&limit=1`
       );
       
-      if(!response.ok) throw new Error('Error en la API');
+      if(!response.ok) throw new Error('Failed to fetch the API');
 
       const data = await response.json();
       
@@ -59,7 +59,7 @@
       }));
 
     } catch (error) {
-      console.error('Error al cargar datos de Spotify:', error);
+      console.error('Failed to fetch the data from Spotify => ', error);
       this.showLastPlayed();
     }
   }
@@ -71,8 +71,8 @@
       this.updateDisplay(track);
     } else {
       this.updateDisplay({
-        name: 'No disponible',
-        artist: 'Conecta Last.fm',
+        name: '',
+        artist: '',
         image: '',
         isPlaying: false
       });
