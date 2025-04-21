@@ -8,7 +8,7 @@
     const savedTime = localStorage.getItem('audioCurrentTime');
     const savedVolume = localStorage.getItem('audioVolume');
   
-    if (savedTime) audio.currentTime = parseFloat(savedTime);
+    if(savedTime) audio.currentTime = parseFloat(savedTime);
     audio.volume = savedVolume ? parseFloat(savedVolume) : 0;
   
     updateIcon(audio.volume > 0);
@@ -31,7 +31,7 @@
   muteButton.addEventListener('click', () => {
     const isMuted = audio.volume === 0;
     audio.volume = isMuted ? 1 : 0;
-    if (isMuted) audio.play();
+    if(isMuted) audio.play();
   
     updateIcon(!isMuted);
     toggleVolumeMenu(isMuted);
