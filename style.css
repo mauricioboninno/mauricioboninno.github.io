@@ -96,6 +96,61 @@ footer a {
   animation: blink 1.5s infinite;
 }
 
+#spotify-info {
+  font-size: 0.4em;
+  color: #1DB954;
+  margin-top: 5px;
+  display: none;
+  max-width: 300px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#spotify-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 5px;
+  display: none;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+#spotify-image:hover {
+  transform: scale(1.05);
+}
+
+.spotify-now-playing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.spotify-track-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  font-size: 0.35em;
+  max-width: 200px;
+}
+
+.spotify-track-name {
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.spotify-artist {
+  color: #888;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;

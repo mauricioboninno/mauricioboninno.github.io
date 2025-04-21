@@ -15,14 +15,23 @@
     static #UPDATE_INTERVAL = 3000;
     static #FETCH_FAIL_TEXT = "Failed to fetch status";
 
+    #spotifyElement;
+    #spotifyImageElement;
     #element;
     #userId;
     #intervalId = null;
     #currentStatus = null;
 
-    constructor(userId = "1245158014969974930", elementId = "status-text") {
+    constructor(
+      userId = "1245158014969974930", 
+      elementId = "status-text",
+      spotifyElementId = "spotify-info",
+      spotifyImageElementId = "spotify-image"
+  ) {
       this.#userId = userId;
       this.#element = document.getElementById(elementId);
+      this.#spotifyElement = document.getElementById(spotifyElementId);
+      this.#spotifyImageElement = document.getElementById(spotifyImageElementId);
     
       if(!this.#element) {
         throw new Error(`Element with ID '${elementId}' not found`);
@@ -36,6 +45,7 @@
         if(!response.ok) throw new Error("API request failed");
       
         const { data } = await response.json();
+
         return data.discord_status?.toLowerCase() || null;
       } catch (error) {
         console.log(error);
@@ -43,22 +53,57 @@
       }
     }
 
-    #updateUI(status) {
-      this.#element.classList.remove(...Discord.#ANIMATION_CLASSES.states);
+    #updateUI(data) {
+      if (data.listening_to_spotify && data.spotify) {
+        const song = data.spotify.song;
+        const artist = data.spotify.artist;
+        const albumArt = data.spotify.album_art_url;
+        
+        if (this.#spotifyElement) {
+            this.#spotifyElement.textContent = `Listening to ${song} by ${artist}`;
+            this.#spotifyElement.style.display = "block";
+        }
+        
+        if (this.#spotifyImageElement) {
+            this.#spotifyImageElement.src = albumArt;
+            this.#spotifyImageElement.style.display = "block";
+        }
+        
+        const status = data.discord_status?.toLowerCase() || "online";
+        this.#element.classList.remove(...Discord.#ANIMATION_CLASSES.states);
+        void this.#element.offsetWidth;
+        this.#element.textContent = Discord.#STATUS_MAP[status] || Discord.#FETCH_FAIL_TEXT;
+        this.#element.classList.add(status, ...Discord.#ANIMATION_CLASSES.base.split(" "));
+        
+        this.#currentStatus = "spotify";
+      } else {
+        if (this.#spotifyElement) this.#spotifyElement.style.display = "none";
+            if (this.#spotifyImageElement) this.#spotifyImageElement.style.display = "none";
+            
+            // Update normal status
+            const status = data.discord_status?.toLowerCase() || "offline";
+            if (status !== this.#currentStatus) {
+                this.#element.classList.remove(...Discord.#ANIMATION_CLASSES.states);
+                void this.#element.offsetWidth;
+                this.#element.textContent = Discord.#STATUS_MAP[status] || Discord.#FETCH_FAIL_TEXT;
+                this.#element.classList.add(status, ...Discord.#ANIMATION_CLASSES.base.split(" "));
+                this.#currentStatus = status;
+      }
+    }
+      /*this.#element.classList.remove(...Discord.#ANIMATION_CLASSES.states);
     
       void this.#element.offsetWidth;
     
       this.#element.textContent = Discord.#STATUS_MAP[status] || Discord.#FETCH_FAIL_TEXT;
       this.#element.classList.add(status, ...Discord.#ANIMATION_CLASSES.base.split(" "));
     
-      this.#currentStatus = status;
+      this.#currentStatus = status;*/
     }
 
     async #checkAndUpdate() {
-      const newStatus = await this.#fetchStatus();
-    
-      if(newStatus && newStatus !== this.#currentStatus) {
-        this.#updateUI(newStatus);
+      const data = await this.#fetchStatus();
+      if(data) {
+          this.#updateUI(data);
       }
     }
 
@@ -80,5 +125,7 @@
     destroy() {
       this.stopTracking();
       this.#element = null;
+      this.#spotifyElement = null;
+      this.#spotifyImageElement = null;
     }
   }
