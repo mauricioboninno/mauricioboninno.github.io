@@ -123,15 +123,8 @@ footer a {
   color: #888;
   font-size: 1.5em;
   transition: color 0.3s ease;
-  padding: 5px;
-  z-index: 1001;
-  width: auto;
-  height: auto;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
+  padding: 0;
+  z-index: 1000;
 }
 
 .mute-button:hover {
