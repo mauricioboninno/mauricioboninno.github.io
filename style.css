@@ -134,7 +134,7 @@ footer a {
 .volume-menu {
   position: fixed;
   bottom: 20px;
-  left: 80px;
+  left: 70px;
   background: none;
   border: none;
   border-radius: 10px;
@@ -154,7 +154,7 @@ footer a {
   appearance: none;
   outline: none;
   margin: 0;
-  transform: none;
+  transform: rotate(270deg);;
 }
 
 .volume-menu input[type="range"]::-webkit-slider-thumb {
