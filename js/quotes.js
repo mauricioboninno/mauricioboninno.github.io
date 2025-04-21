@@ -9,7 +9,7 @@ export class Quotes {
     finalMessage: "Good luck!",
     typingOptions: {
       typeSpeed: 75,
-      startDelay: 10000,
+      startDelay: 5100,
       backSpeed: 75,
       smartBackspace: true,
       shuffle: false,
