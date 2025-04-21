@@ -368,7 +368,8 @@ footer a {
 .spotify-menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 50%;
+  transform: translate(-50%, 10px);
   background: linear-gradient(145deg, rgba(40,40,40,0.85), rgba(20,20,20,0.85));
   backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -378,7 +379,6 @@ footer a {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
   transition: all 0.3s ease;
   z-index: 1001;
   pointer-events: none;
@@ -388,7 +388,7 @@ footer a {
 .spotify-link-container:hover .spotify-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
   pointer-events: auto;
 }
 
