@@ -43,7 +43,7 @@ const audioToggleModule = (function() {
   }
   
   return {
-      init: init,
+      handle: handle,
       toggleMute: toggleMute
   };
 })();
