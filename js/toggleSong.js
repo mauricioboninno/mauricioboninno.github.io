@@ -13,6 +13,7 @@ volumeSlider.value = audio.volume;
 muteToggle.addEventListener('click', function (e) {
   e.stopPropagation();
   if (!isPlaying) {
+    audio.currentTime = 126;
     audio.play().then(() => {
       isPlaying = true;
       audio.muted = false;
@@ -50,3 +51,8 @@ document.addEventListener('click', (e) => {
 });
 
 updateButtonIcon();
+
+audio.addEventListener('ended', function () {
+  audio.currentTime = 127;
+  audio.play();
+});
