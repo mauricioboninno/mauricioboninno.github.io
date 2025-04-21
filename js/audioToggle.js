@@ -20,7 +20,6 @@ const closeVolumeMenu = () => {
 
 muteButton.addEventListener('click', () => {
   if (audio.volume === 0) {
-    // Desmutear
     audio.volume = 1;
     audio.play();
     icon.classList.remove('fa-volume-mute');
@@ -31,6 +30,7 @@ muteButton.addEventListener('click', () => {
     clearTimeout(closeVolumeMenuTimeout);
     closeVolumeMenuTimeout = setTimeout(closeVolumeMenu, 3000);
   } else {
+
     audio.volume = 0;
     icon.classList.remove('fa-volume-up');
     icon.classList.add('fa-volume-mute');
@@ -56,6 +56,14 @@ volumeSlider.addEventListener('input', (event) => {
   closeVolumeMenuTimeout = setTimeout(closeVolumeMenu, 3000);
 
   localStorage.setItem('audioVolume', audio.volume);
+});
+
+volumeSliderContainer.addEventListener('mouseover', () => {
+  clearTimeout(closeVolumeMenuTimeout);
+});
+
+volumeSliderContainer.addEventListener('mouseout', () => {
+  closeVolumeMenuTimeout = setTimeout(closeVolumeMenu, 1000);
 });
 
 audio.addEventListener('timeupdate', () => {
