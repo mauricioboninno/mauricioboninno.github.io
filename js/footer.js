@@ -20,7 +20,7 @@
   function updateFooterType() {
     element.classList.replace("animate__fadeIn", "animate__fadeOut");
     
-    const defaultText = `made with 🩶 by <a href="mailto:mauricio@boninno.com.ar">@mau</a>`;
+    const defaultText = `made with 🤍 by <a href="mailto:mauricio@boninno.com.ar">@mau</a>`;
     const dateTimeText = loadDateTime();
   
     setTimeout(() => {
