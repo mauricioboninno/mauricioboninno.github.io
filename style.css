@@ -146,8 +146,8 @@ footer a {
 }
 
 .volume-menu input[type="range"] {
-  width: 5px;
-  height: 60px;
+  width: 100px;
+  height: 5px;
   accent-color: white;
   background: #888;
   border-radius: 5px;
