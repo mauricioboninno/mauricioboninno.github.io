@@ -1,7 +1,7 @@
   import { Quotes } from './quotes.js';
   import { Footer } from './footer.js';
-  import { Discord } from './app/discord.js';
-  import { Spotify } from './app/spotify.js';
+  import { Discord } from './apps/discord.js';
+  import { Spotify } from './apps/spotify.js';
   import { Audio } from './audio.js';
 
   function initializeApp() {
