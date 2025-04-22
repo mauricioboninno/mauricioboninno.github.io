@@ -1,5 +1,5 @@
   export class Spotify {
-  static DEFAULT_IMAGE = 'img/defaultImage.jpg';
+  static DEFAULT_IMAGE = 'img/image-error.png';
   static LASTFM_API_URL = 'https://ws.audioscrobbler.com/2.0/';
   static LOCALSTORAGE_KEY = 'lastPlayedTrack';
 
