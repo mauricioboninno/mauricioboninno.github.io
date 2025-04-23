@@ -414,7 +414,6 @@ footer a {
 
 .spotify-menu-header {
   font-size: 0.55em;
-  color: #1DB954;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -422,6 +421,14 @@ footer a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.spotify-menu-header[data-status="Listening to"] {
+  color: #1DB954;
+}
+
+.spotify-menu-header[data-status="Last song"] {
+  color: #ff4141;
 }
 
 .spotify-track-name {

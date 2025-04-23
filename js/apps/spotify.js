@@ -92,8 +92,8 @@
     const isNowPlaying = track['@attr']?.nowplaying === "true";
 
     return {
-      name: track.name || 'Unknown Track',
-      artist: track.artist['#text'] || 'Unknown Artist',
+      name: track.name || '',
+      artist: track.artist['#text'] || '',
       image: this.getBestAvailableImage(track.image),
       url: track.url || this.generateTrackUrl(track),
       isPlaying: isNowPlaying,
@@ -172,8 +172,12 @@
 
   updateDisplay(track) {
     const { menuHeader, trackName, trackArtist, trackImage } = this.elements;
-    
-    menuHeader.textContent = track.isPlaying ? 'Listening to' : 'Last song';
+
+    const statusText = track.isPlaying ? 'Listening to' : 'Last song';
+
+    menuHeader.textContent = statusText;
+    menuHeader.setAttribute('data-status', statusText);
+
     trackName.textContent = track.name;
     trackArtist.textContent = track.artist;
     
