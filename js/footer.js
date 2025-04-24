@@ -29,7 +29,7 @@
     #toggleContent() {
       this.#element.classList.replace("animate__fadeIn", "animate__fadeOut");
 
-      const defaultText = `made with 🤍 by <a href="mailto:mauricio@boninno.com.ar">@mauricio</a>`;
+      const defaultText = `Developed by <a href="mailto:mauricio@boninno.com.ar">@mauricio</a>`;
     
       setTimeout(() => {
         this.#element.innerHTML = this.#showDefaultText ? defaultText : this.#getFormattedDate();
