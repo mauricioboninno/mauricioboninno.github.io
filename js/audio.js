@@ -18,6 +18,10 @@
     constructor() {
       this.#init();
     }
+
+    #updateState(newState) {
+      this.#state = { ...this.#state, ...newState };
+    }  
   
     async #init() {
       const { audio, volumeMenu, volumeSlider } = this.#elements;
@@ -36,10 +40,11 @@
     #setupEventListeners() {
       const { muteToggle, audio, volumeSlider } = this.#elements;
   
-      muteToggle.addEventListener('click', (e) => this.#handleMuteToggle(e));
-      volumeSlider.addEventListener('input', () => this.#handleVolumeChange());
-      document.addEventListener('click', (e) => this.#handleDocumentClick(e));
-      audio.addEventListener('timeupdate', () => this.#handleAudioLoop());
+      muteToggle.addEventListener('click', this.#handleMuteToggle.bind(this));
+      volumeSlider.addEventListener('input',  this.#handleVolumeChange.bind(this));
+      document.addEventListener('click', this.#handleDocumentClick.bind(this));
+
+      audio.addEventListener('timeupdate', () => requestAnimationFrame(() => this.#handleAudioLoop()));
     }
   
     async #handleMuteToggle(e) {
@@ -54,7 +59,7 @@
         if(audio.paused || audio.ended) {
           audio.currentTime = initialTime;
           await audio.play();
-          this.#state.isPlaying = true;
+          this.#updateState({ isPlaying: true });
           audio.muted = false;
         } else {
           audio.muted = !audio.muted;
@@ -76,9 +81,17 @@
       this.#updateButtonIcon();
     }
   
-    #handleDocumentClick(e) {
+    #handleDocumentClick(event) {
       const { volumeMenu, muteToggle } = this.#elements;
-      if(!volumeMenu.contains(e.target) && e.target !== muteToggle) {
+
+      const shouldHideVolumeMenu = (
+        volumeMenu && 
+        muteToggle &&
+        !volumeMenu.contains(event.target) && 
+        event.target !== muteToggle
+      );
+
+      if(shouldHideVolumeMenu) {
         volumeMenu.classList.add('hidden');
       }
     }
@@ -86,14 +99,17 @@
     async #handleAudioLoop() {
       const { audio } = this.#elements;
       const { loopEnd, loopStart } = this.#state;
-  
-      if(audio.currentTime >= loopEnd) {
-        audio.currentTime = loopStart;
-        try {
-          await audio.play();
-        } catch (error) {
-          console.log(error);
-        }
+
+      if(audio.currentTime < loopEnd) return;
+
+      audio.currentTime = loopStart;
+
+      try {
+        await audio.play();
+        this.#updateState({ isPlaying: true });
+      } catch (error) {
+        console.error('Audio loop playback failed => ', error.message);
+        this.#updateState({ isPlaying: false });
       }
     }
   
@@ -111,21 +127,19 @@
     }
   
     async startAudio() {
+      if(this.#state.wasEverPlayed) return;
+
       const { audio } = this.#elements;
-      const { initialTime, wasEverPlayed } = this.#state;
-  
-      if(!wasEverPlayed) {
-        try {
-          audio.currentTime = initialTime;
-          await audio.play();
-          this.#state.isPlaying = true;
-          this.#state.wasEverPlayed = true;
-          this.#updateButtonIcon();
-        } catch (error) {
-          console.log('Autoplay blocked, waiting for user interaction');
-          this.#state.isPlaying = false;
-          this.#updateButtonIcon();
-        }
+
+      try {
+        audio.currentTime = this.#state.initialTime;
+        await audio.play();
+        this.#updateState({ isPlaying: true, wasEverPlayed: true });
+      } catch (error) {
+        console.error('Audio playback failed => ', error.message);
+        this.#updateState({ isPlaying: false });
+      } finally {
+        this.#updateButtonIcon();
       }
     }
   }

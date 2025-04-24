@@ -14,7 +14,8 @@
       trackImage: document.getElementById('spotify-track-image'),
       trackName: document.getElementById('spotify-track-name'),
       trackArtist: document.getElementById('spotify-track-artist'),
-      menuHeader: document.getElementById('spotify-menu-header')
+      menuHeader: document.getElementById('spotify-menu-header'),
+      lastPlayedTime: document.getElementById('spotify-last-played-time')
     };
 
     this.state = {
@@ -97,7 +98,7 @@
       image: this.getBestAvailableImage(track.image),
       url: track.url || this.generateTrackUrl(track),
       isPlaying: isNowPlaying,
-      timestamp: Date.now()
+      timestamp: isNowPlaying ? Date.now() : (track.date?.uts ? track.date.uts * 1000 : Date.now())
     };
   }
 
@@ -118,8 +119,7 @@
   }
 
   isValidImageUrl(url) {
-    if(!url) return false;
-    if(url.includes('2a96cbd8b46e442fc41c2b86b821562f')) return false;
+    if(!url || url.includes('2a96cbd8b46e442fc41c2b86b821562f')) return false;
     
     try {
       new URL(url);
@@ -149,15 +149,19 @@
   showLastPlayed() {
     try {
       const lastPlayed = localStorage.getItem(Spotify.LOCALSTORAGE_KEY);
+
       if(lastPlayed) {
         const track = JSON.parse(lastPlayed);
         this.updateDisplay(track);
+        this.updateLastPlayedTime(track.timestamp);
       } else {
         this.updateDisplay(this.emptyTrack());
+        this.elements.lastPlayedTime.textContent = '';
       }
     } catch (error) {
       console.error('Failed to load last played track:', error);
       this.updateDisplay(this.emptyTrack());
+      this.elements.lastPlayedTime.textContent = '';
     }
   }
 
@@ -170,27 +174,59 @@
     };
   }
 
+  updateLastPlayedTime(timestamp) {
+    if(!timestamp) return;
+
+    const pluralize = (value, unit) => `${value} ${unit}${value !== 1 ? 's' : ''} ago`;
+
+    const parseTimeUnit = (ms) => ({
+      minute: Math.floor(ms / 60000),
+      hour: Math.floor(ms / 3600000),
+      day: Math.floor(ms / 86400000)
+    });
+
+    const { minute, hour, day } = parseTimeUnit(Date.now() - timestamp);
+
+    switch(true) {
+      case day > 0: this.elements.lastPlayedTime.textContent = pluralize(day, 'day'); break;
+      case hour > 0: this.elements.lastPlayedTime.textContent = pluralize(hour, 'hour'); break;
+      case minute > 0: this.elements.lastPlayedTime.textContent = pluralize(minute, 'minute'); break;
+      default: this.elements.lastPlayedTime.textContent = 'Just now'; 
+    }
+  }
+
   updateDisplay(track) {
     const { menuHeader, trackName, trackArtist, trackImage } = this.elements;
+    const { isPlaying, name, artist, image } = track;
 
-    const statusText = track.isPlaying ? 'Listening to' : 'Last song';
-
+    const statusText = isPlaying ? 'Listening to' : 'Last song';
     menuHeader.textContent = statusText;
     menuHeader.setAttribute('data-status', statusText);
 
-    trackName.textContent = track.name;
-    trackArtist.textContent = track.artist;
-    
+    trackName.textContent = name || 'Failed to load track name';
+    trackArtist.textContent = artist || 'Failed to load artist name';
+
+    this.loadTrackImage(trackImage, image);
+
+    if(!isPlaying && track.timestamp) {
+      this.updateLastPlayedTime(track.timestamp);
+    } else {
+      this.elements.lastPlayedTime.textContent = '';
+    }
+  }
+
+  loadTrackImage(element, url) {
+    const effectiveUrl = url || Spotify.DEFAULT_IMAGE;
     const img = new Image();
-    img.onload = () => {
-      trackImage.style.backgroundImage = `url('${track.image}')`;
-      trackImage.style.display = 'block';
+
+    const updateImage = (imageUrl) => {
+        element.style.backgroundImage = `url('${imageUrl}')`;
+        element.style.display = 'block';
     };
-    img.onerror = () => {
-      trackImage.style.backgroundImage = `url('${Spotify.DEFAULT_IMAGE}')`;
-      trackImage.style.display = 'block';
-    };
-    img.src = track.image || Spotify.DEFAULT_IMAGE;
+
+    img.onload = () => updateImage(effectiveUrl);
+    img.onerror = () => updateImage(Spotify.DEFAULT_IMAGE);
+    img.src = effectiveUrl;
   }
 
   destroy() {

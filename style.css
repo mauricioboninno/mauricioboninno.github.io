@@ -447,3 +447,13 @@ footer a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.spotify-last-played-time {
+  font-size: 0.55em;
+  color: #888;
+  margin-top: 4px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
