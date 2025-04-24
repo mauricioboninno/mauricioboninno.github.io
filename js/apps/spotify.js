@@ -130,9 +130,13 @@
   }
 
   generateTrackUrl(track) {
-    const artist = encodeURIComponent(track.artist['#text'] || 'Unknown Artist');
-    const name = encodeURIComponent(track.name || 'Unknown Track');
-    return `https://www.last.fm/music/${artist}/_/${name}`;
+    const artist = track.artist?.['#text'] ?? 'Unknown Artist';
+    const name = track.name ?? 'Unknown Track';
+  
+    const encodedArtist = encodeURIComponent(artist);
+    const encodedName = encodeURIComponent(name);
+
+    return `https://www.last.fm/music/${encodedArtist}/_/${encodedName}`;
   }
 
   cacheTrack(track) {
