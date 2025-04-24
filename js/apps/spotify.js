@@ -181,8 +181,6 @@
   updateLastPlayedTime(timestamp) {
     if(!timestamp) return;
 
-    let abc = this.elements.lastPlayedTime.textContent;
-
     const pluralize = (value, unit) => `${value} ${unit}${value !== 1 ? 's' : ''} ago`;
 
     const parseTimeUnit = (ms) => ({
