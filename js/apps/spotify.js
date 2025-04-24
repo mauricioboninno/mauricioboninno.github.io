@@ -181,6 +181,8 @@
   updateLastPlayedTime(timestamp) {
     if(!timestamp) return;
 
+    let abc = this.elements.lastPlayedTime.textContent;
+
     const pluralize = (value, unit) => `${value} ${unit}${value !== 1 ? 's' : ''} ago`;
 
     const parseTimeUnit = (ms) => ({
@@ -191,12 +193,16 @@
 
     const { minute, hour, day } = parseTimeUnit(Date.now() - timestamp);
 
+    let timeStampText;
+
     switch(true) {
-      case day > 0: this.elements.lastPlayedTime.textContent = pluralize(day, 'day'); break;
-      case hour > 0: this.elements.lastPlayedTime.textContent = pluralize(hour, 'hour'); break;
-      case minute > 0: this.elements.lastPlayedTime.textContent = pluralize(minute, 'minute'); break;
-      default: this.elements.lastPlayedTime.textContent = 'Just now'; 
+      case day > 0: timeStampText = pluralize(day, 'day'); break;
+      case hour > 0: timeStampText = pluralize(hour, 'hour'); break;
+      case minute > 0: timeStampText = pluralize(minute, 'minute'); break;
+      default: timeStampText = 'Just now'; 
     }
+
+    this.elements.lastPlayedTime.textContent = timeStampText
   }
 
   updateDisplay(track) {
