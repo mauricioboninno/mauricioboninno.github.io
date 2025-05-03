@@ -20,15 +20,17 @@
     });
   }
 
-  initializeApp();
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
 
-  document.getElementById('enter-button').addEventListener('click', () => {
-    document.getElementById('blur-overlay').style.display = 'none';
-  
-    const audio = document.getElementById('bg-audio');
-    audio.volume = 0.5;
-    audio.play().catch(err => {
-      console.error("No se pudo reproducir el audio automáticamente:", err);
+    document.getElementById('enter-button').addEventListener('click', () => {
+      document.getElementById('blur-overlay').style.display = 'none';
+    
+      const audio = document.getElementById('bg-audio');
+      audio.volume = 0.5;
+      audio.play().catch(err => {
+        console.error("No se pudo reproducir el audio automáticamente:", err);
+      });
     });
   });
 
