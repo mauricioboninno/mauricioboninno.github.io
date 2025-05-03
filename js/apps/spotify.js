@@ -15,13 +15,13 @@
       trackName: document.getElementById('spotify-track-name'),
       trackArtist: document.getElementById('spotify-track-artist'),
       menuHeader: document.getElementById('spotify-menu-header'),
-      lastPlayedTime: document.getElementById('spotify-last-played-time')
+      lastPlayedTime: document.getElementById('spotify-track-last-played-time')
     };
 
     this.state = {
-      currentTrack: null,
-      checkInterval: null,
-      isFetching: false
+      track: null,
+      interval: null,
+      fetching: false
     };
   }
 
@@ -31,14 +31,14 @@
 
   init() {
     this.checkSpotifyStatus();
-    this.state.checkInterval = setInterval(() => this.checkSpotifyStatus(), 1000);
+    this.state.interval = setInterval(() => this.checkSpotifyStatus(), 1000);
     this.showLastPlayed();
   }
 
   async checkSpotifyStatus() {
-    if(this.state.isFetching) return;
+    if(this.state.fetching) return;
 
-    this.state.isFetching = true;
+    this.state.fetching = true;
     
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -69,8 +69,8 @@
       const data = await response.json();
       const track = this.parseTrackData(data);
       
-      if(track.isPlaying || !this.state.currentTrack?.isPlaying) {
-        this.state.currentTrack = track;
+      if(track.isPlaying || !this.state.track?.isPlaying) {
+        this.state.track = track;
         this.updateDisplay(track);
         this.cacheTrack(track);
       }
@@ -80,7 +80,7 @@
       this.showLastPlayed();
     } finally {
       clearTimeout(timeoutId);
-      this.state.isFetching = false;
+      this.state.fetching = false;
     }
   }
 
@@ -156,6 +156,7 @@
 
       if(lastPlayed) {
         const track = JSON.parse(lastPlayed);
+
         this.updateDisplay(track);
         this.updateLastPlayedTime(track.timestamp);
       } else {
@@ -234,12 +235,13 @@
 
     img.onload = () => updateImage(effectiveUrl);
     img.onerror = () => updateImage(Spotify.DEFAULT_IMAGE);
+
     img.src = effectiveUrl;
   }
 
   destroy() {
-    if(this.state.checkInterval) {
-      clearInterval(this.state.checkInterval);
+    if(this.state.interval) {
+      clearInterval(this.state.interval);
     }
   }
 }
