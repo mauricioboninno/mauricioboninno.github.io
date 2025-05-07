@@ -68,7 +68,7 @@
         this.#updateButtonIcon();
         this.#toggleVolumeMenu();
       } catch (error) {
-        console.error('Failed to load the audio => ', error);
+        console.error(error);
       } finally {
         muteToggle.disabled = false;
       }
@@ -108,7 +108,7 @@
         await audio.play();
         this.#updateState({ isPlaying: true });
       } catch (error) {
-        console.error('Audio loop playback failed => ', error.message);
+        console.error(error.message);
         this.#updateState({ isPlaying: false });
       }
     }
@@ -136,7 +136,7 @@
         await audio.play();
         this.#updateState({ isPlaying: true, wasEverPlayed: true });
       } catch (error) {
-        console.error('Audio playback failed => ', error.message);
+        console.error(error.message);
         this.#updateState({ isPlaying: false });
       } finally {
         this.#updateButtonIcon();

@@ -76,7 +76,7 @@
       }
 
     } catch (error) {
-      console.error('Failed to fetch Spotify data:', error);
+      console.error(error);
       this.showLastPlayed();
     } finally {
       clearTimeout(timeoutId);
@@ -146,7 +146,7 @@
         JSON.stringify(track)
       );
     } catch (error) {
-      console.error('Failed to cache track:', error);
+      console.error(error);
     }
   }
 
@@ -164,7 +164,7 @@
         this.elements.lastPlayedTime.textContent = '';
       }
     } catch (error) {
-      console.error('Failed to load last played track:', error);
+      console.error(error);
       this.updateDisplay(this.emptyTrack());
       this.elements.lastPlayedTime.textContent = '';
     }

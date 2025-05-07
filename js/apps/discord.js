@@ -45,7 +45,7 @@
             const { data } = await response.json();
             return data;
         } catch (error) {
-            console.error('Error fetching Discord status:', error);
+            console.error(error);
             return null;
         }
     }
