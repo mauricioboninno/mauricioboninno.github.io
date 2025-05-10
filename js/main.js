@@ -3,6 +3,7 @@
   import { Footer } from './footer.js';
   import { Discord } from './apps/discord.js';
   import { Spotify } from './apps/spotify.js';
+  import { Github } from './apps/github.js';
 
   function initializeApp() {
     const modules = [
@@ -11,6 +12,7 @@
         { instance: new Footer(), method: 'startCycling' },
         { instance: new Discord(), method: 'startTracking' },
         { instance: new Spotify(), method: 'startChecking' },
+        { instance: new Github(), method: 'startFetching' },
     ];
 
     modules.forEach(({ instance, method }) => {

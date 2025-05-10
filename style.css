@@ -270,3 +270,84 @@ footer a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.github-link-container {
+  position: relative;
+  display: inline-block;
+}
+
+.github-menu {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  background: rgba(25, 25, 25, 0.95);
+  border-radius: 14px;
+  padding: 16px;
+  width: 280px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1001;
+}
+
+.github-username {
+  font-size: 0.55em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.github-link-container:hover .github-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.github-content {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.github-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.github-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: hidden;
+  max-width: 180px;
+}
+
+.github-followers,
+.github-contributions {
+  font-size: 0.6em;
+  color: #bbb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.github-createdAgo {
+  font-size: 0.55em;
+  color: #888;
+  margin-top: 4px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

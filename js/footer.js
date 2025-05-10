@@ -19,10 +19,7 @@
     #getFormattedDate() {
       const now = new Date();
       return new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric'
+        year: 'numeric', weekday: 'long', month: 'short', day: 'numeric'
       }).format(now);
     }
 
