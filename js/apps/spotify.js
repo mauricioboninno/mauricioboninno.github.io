@@ -240,8 +240,8 @@
   }
 
   destroy() {
-    if(this.state.interval) {
-      clearInterval(this.state.interval);
-    }
+    if(!this.start.interval) return;
+
+    clearInterval(this.state.interval);
   }
 }

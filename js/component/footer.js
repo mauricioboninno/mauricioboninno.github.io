@@ -17,10 +17,9 @@
     }
 
     #getFormattedDate() {
-      const now = new Date();
       return new Intl.DateTimeFormat('en-US', {
         year: 'numeric', weekday: 'long', month: 'short', day: 'numeric'
-      }).format(now);
+      }).format(new Date());
     }
 
     #toggleContent() {
@@ -44,10 +43,10 @@
     }
 
     stopCycling() {
-      if(this.#intervalId) {
-        clearInterval(this.#intervalId);
-        this.#intervalId = null;
-      }
+      if(!this.#intervalId) return;
+
+      clearInterval(this.#intervalId);
+      this.#intervalId = null;
     }
 
     destroy() {

@@ -87,10 +87,10 @@
     }
 
     stopTracking() {
-        if(this.#intervalId) {
-            clearInterval(this.#intervalId);
-            this.#intervalId = null;
-        }
+        if(!this.#intervalId) return;
+
+        clearInterval(this.#intervalId);
+        this.#intervalId = null;
     }
 
     destroy() {

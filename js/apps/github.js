@@ -1,7 +1,7 @@
   export class Github {
   static GITHUB_API_URL = 'https://api.github.com/users/';
   static GITHUB_CONTRIB_API_URL = 'https://github-contributions-api.deno.dev/';
-  
+
   constructor() {
     this.config = {
       username: 'mauricioboninno'
@@ -43,9 +43,7 @@
         fetch(`${Github.GITHUB_CONTRIB_API_URL}${username}.json`)
       ]);
 
-      if(!userRes.ok || !contribRes.ok) {
-        throw new Error('Failed to fetch GitHub data');
-      }
+      if(!userRes.ok || !contribRes.ok) throw new Error('Failed to fetch GitHub data');
 
       const userData = await userRes.json();
       const contribData = await contribRes.json();
@@ -61,22 +59,19 @@
     }
   }
 
-  calculateDaysAgo(dateString) {
-    const createdDate = new Date(dateString);
-    const now = new Date();
-    const diffTime = Math.abs(now - createdDate);
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  }
-
   updateDisplay(userData, contribData) {
-    const { username, avatar, followers, contributions, createdAgo} = this.elements;
+    const { username, avatar, followers, contributions, createdAgo } = this.elements;
 
     username.textContent = userData.login || 'Unknown User';
     avatar.style.backgroundImage = `url('${userData.avatar_url || ''}')`;
-    followers.textContent = `Followers: ${userData.followers || 0}`;
+
+    followers.textContent = `Followers: ${userData.followers || 0}, Following: ${userData.following || 0}`;
+
     contributions.textContent = `Contributions: ${contribData.totalContributions || 0}`;
 
-    const diffDays = this.calculateDaysAgo(userData.created_at);
+    const diffTime = Math.abs(new Date() - new Date(userData.created_at));
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
     createdAgo.textContent = `Joined ${diffDays} days ago`;
   }
 }
